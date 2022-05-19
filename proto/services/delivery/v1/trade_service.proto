@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package services.delivery.v1;
+
+import "services/delivery/v1/trade_msg.proto";
+
+option go_package = "github.com/h9896/bingo-pkg-proto/proto/services/delivery/v1;v1";
+
+
+service DeliveryTradeService {
+    // Change user's position mode (Hedge Mode or One-way Mode ) on EVERY symbol
+    rpc ChangePositionMode(ChangePositionModeRequest) returns (ChangePositionModeResponse){};
+    // Get user's position mode (Hedge Mode or One-way Mode ) on EVERY symbol
+    rpc GetPositionMode(Empty) returns (GetPositionModeResponse){};
+    // Send in a new order.
+    rpc NewOrder(NewOrderRequest) returns (NewOrderResponse){};
+    // Cancel an active order.
+    rpc CancelOrder(CancelOrderRequest) returns (CancelOrderResponse){};
+
+}

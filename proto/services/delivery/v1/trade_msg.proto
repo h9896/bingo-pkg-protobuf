@@ -1,0 +1,160 @@
+syntax = "proto3";
+
+package services.delivery.v1;
+
+option go_package = "github.com/h9896/bingo-pkg-proto/proto/services/delivery/v1;v1";
+
+
+enum OrderSide {
+    ORDER_SIDE_UNSPECIFIED = 0;
+    BUY = 1;
+    SELL = 2;
+}
+
+enum PositionSide {
+    BOTH = 0;
+    LONG = 1;
+    SHORT= 2;
+}
+
+enum OrderType {
+    ORDER_TYPE_UNSPECIFIED = 0;
+    LIMIT = 1;
+    MARKET = 2;
+    STOP = 3;
+    STOP_MARKET = 4;
+    TAKE_PROFIT = 5;
+    TAKE_PROFIT_MARKET = 6;
+    TRAILING_STOP_MARKET = 7;
+}
+
+enum TimeInForce {
+    TIME_IN_FORCE_UNSPECIFIED = 0;
+    // Good till cancel
+    GTC = 1;
+    // Immediate or Cancel
+    IOC = 2;
+    // Fill or Kill
+    FOK = 3;
+    // Good till crossing
+    GTX = 4;
+}
+
+enum WorkingType {
+    WORKING_TYPE_UNSPECIFIED = 0;
+    MARK_PRICE = 1;
+    CONTRACT_PRICE = 2;
+}
+
+enum ResponseType {
+    RESPONSE_TYPE_UNSPECIFIED = 0;
+    ACK = 1;
+    RESULT = 2;
+}
+
+enum OrderStatus {
+    ORDER_STATUS_UNSPECIFIED = 0;
+    NEW = 1;
+    PARTIALLY_FILLED = 2;
+    FILLED = 3;
+    CANCELED = 4;
+    EXPIRED = 5;
+}
+
+message Empty{}
+
+message ChangePositionModeRequest {
+	// YES	"true": Hedge Mode; "false": One-way Mode
+	string dualSidePosition = 1;
+    int64 recvWindow = 2;
+}
+
+message ChangePositionModeResponse {
+    int32 code = 1;
+    string msg = 2;
+}
+
+message GetPositionModeResponse {
+    bool dualSidePosition = 1;
+}
+
+message NewOrderRequest {
+    string symobl = 1;
+    OrderSide side = 2;
+    PositionSide positionSide = 3;
+    OrderType type = 4;
+    double quantity = 5;
+    string reduceOnly = 6;
+    double price = 7;
+    string newClientOrderId = 8;
+    double stopPrice = 9;
+    string closePosition = 10;
+    double activationPrice = 11;
+    double callbackRate = 12;
+    WorkingType workingType = 13;
+    string priceProtect = 14;
+    ResponseType newOrderRespType = 15;
+    TimeInForce timeInForce = 16;
+    int64 recvWindow = 17;
+}
+
+message NewOrderResponse {
+    string clientOrderId = 1;
+    double cumQty = 2;
+    double cumBase = 3;
+    double executedQty = 4;
+    int64 orderId = 5;
+    double avgPrice = 6;
+    double origQty = 7;
+    double price = 8;
+    bool reduceOnly = 9;
+    OrderSide side = 10;
+    PositionSide positionSide = 11;
+    OrderStatus status = 12;
+    double stopPrice = 13;
+    bool closePosition = 14;
+    string symbol = 15;
+    string pair = 16;
+    TimeInForce timeInForce = 17;
+    OrderType type = 18;
+    OrderType origType = 19;
+    double activatePrice = 20;
+    double priceRate = 21;
+    int64 updateTime = 22;
+    WorkingType workingType = 23;
+    bool priceProtect = 24;
+}
+
+message CancelOrderRequest{
+    string symbol = 1;
+    int64 orderId = 2;
+    string origClientOrderId = 3;
+    int64 recvWindow = 4;
+}
+
+message CancelOrderResponse {
+    double avgPrice = 1;
+    string clientOrderId = 2;
+    double cumQty = 3;
+    double cumBase = 4;
+    double executedQty = 5;
+    int64 orderId = 6;
+    string origQty = 7;
+    OrderType origType = 8;
+    double price = 9;
+    bool reduceOnly = 10;
+    OrderSide side = 11;
+    PositionSide positionSide = 12;
+    OrderStatus status = 13;
+    double stopPrice = 14;
+    bool closePosition = 15;
+    string symbol = 16;
+    string pair = 17;
+    TimeInForce timeInForce = 18;
+    OrderType type = 19;
+    double activatePrice = 20;
+    double priceRate = 21;
+    int64 updateTime = 22;
+    WorkingType workingType = 23;
+    bool priceProtect = 24;
+}

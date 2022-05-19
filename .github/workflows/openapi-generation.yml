@@ -1,0 +1,42 @@
+name: ProtobufGeneration
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+
+env:
+  ACCESS_TOKEN: ${{ secrets.ACTION_TOKEN }}
+
+jobs:
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+    # Checks-out your resitory under $GITHUB_WORKSPACE, so your job can access it
+    - uses: actions/checkout@v2
+    # Install the `buf` CLI
+    - uses: bufbuild/buf-setup-action@v1.3.0
+    # Ensure that `buf` is installed
+    - name: Check buf
+      run: buf --version
+
+    - name: Clone Repo & Generate Swagger
+      run: |
+        git config --global url."https://${ACCESS_TOKEN}:x-oauth-basic@github.com/".insteadOf "https://github.com"
+        make generate
+    
+    - name: Commit Changed Files & Push
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "Github Action"
+        git add --all .
+        git commit -a -m "Update go services"
+        git status
+        git push
+
+
+
+
