@@ -125,3 +125,32 @@ message Position {
     PositionSide positionSide = 12;
     int64 updateTime = 13;
 }
+
+message BatchOrders{
+    string symbol = 1;
+    OrderSide side = 2;
+    PositionSide positionSide = 3;
+    OrderType type = 4;
+    string quantity = 5;
+    string reduceOnly = 6;
+    string price = 7;
+    string newClientOrderId = 8;
+    string stopPrice = 9;
+    string closePosition = 10;
+    string activationPrice = 11;
+    string callbackRate = 12;
+    WorkingType workingType = 13;
+    string priceProtect = 14;
+    ResponseType newOrderRespType = 15;
+    TimeInForce timeInForce = 16;
+}
+
+message ModifyBatchOrders {
+    int64 orderId = 1;
+    string origClientOrderId = 2;
+    string symbol = 3;
+    OrderSide side = 4;
+    double quantity = 5;
+    double price = 6;
+    int64 recvWindow = 7;
+}
