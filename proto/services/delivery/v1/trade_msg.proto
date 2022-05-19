@@ -4,64 +4,7 @@ package services.delivery.v1;
 
 option go_package = "github.com/h9896/bingo-pkg-proto/proto/services/delivery/v1;v1";
 
-
-enum OrderSide {
-    ORDER_SIDE_UNSPECIFIED = 0;
-    BUY = 1;
-    SELL = 2;
-}
-
-enum PositionSide {
-    BOTH = 0;
-    LONG = 1;
-    SHORT= 2;
-}
-
-enum OrderType {
-    ORDER_TYPE_UNSPECIFIED = 0;
-    LIMIT = 1;
-    MARKET = 2;
-    STOP = 3;
-    STOP_MARKET = 4;
-    TAKE_PROFIT = 5;
-    TAKE_PROFIT_MARKET = 6;
-    TRAILING_STOP_MARKET = 7;
-}
-
-enum TimeInForce {
-    TIME_IN_FORCE_UNSPECIFIED = 0;
-    // Good till cancel
-    GTC = 1;
-    // Immediate or Cancel
-    IOC = 2;
-    // Fill or Kill
-    FOK = 3;
-    // Good till crossing
-    GTX = 4;
-}
-
-enum WorkingType {
-    WORKING_TYPE_UNSPECIFIED = 0;
-    MARK_PRICE = 1;
-    CONTRACT_PRICE = 2;
-}
-
-enum ResponseType {
-    RESPONSE_TYPE_UNSPECIFIED = 0;
-    ACK = 1;
-    RESULT = 2;
-}
-
-enum OrderStatus {
-    ORDER_STATUS_UNSPECIFIED = 0;
-    NEW = 1;
-    PARTIALLY_FILLED = 2;
-    FILLED = 3;
-    CANCELED = 4;
-    EXPIRED = 5;
-}
-
-message Empty{}
+import "services/delivery/v1/common.proto";
 
 message ChangePositionModeRequest {
 	// YES	"true": Hedge Mode; "false": One-way Mode
@@ -72,10 +15,6 @@ message ChangePositionModeRequest {
 message ChangePositionModeResponse {
     int32 code = 1;
     string msg = 2;
-}
-
-message GetPositionModeResponse {
-    bool dualSidePosition = 1;
 }
 
 message NewOrderRequest {
@@ -158,3 +97,139 @@ message CancelOrderResponse {
     WorkingType workingType = 23;
     bool priceProtect = 24;
 }
+
+message ModifyOrderRequest {
+    int64 orderId = 1;
+    string origClientOrderId = 2;
+    string symbol = 3;
+    OrderSide side = 4;
+    double quantity = 5;
+    double price = 6;
+    int64 recvWindow = 7;
+}
+
+message ModifyOrderResponse {
+    int64 orderId = 1;
+    string clientOrderId = 2;
+    string symbol = 3;
+    OrderSide side = 4;
+    double price = 5;
+    string pair = 6;
+    OrderStatus status = 7;
+    double avgPrice = 8;
+    double origQty = 9;
+    double executedQty = 10;
+    double cumQty = 11;
+    double cumBase = 12;
+    TimeInForce timeInForce = 13;
+    OrderType type = 14;
+    bool reduceOnly = 15;
+    bool closePosition = 16;
+    PositionSide positionSide = 17;
+    double stopPrice = 18;
+    WorkingType workingType = 19;
+    OrderType origType = 20;
+    bool priceProtect = 21;
+    int64 updateTime = 22;
+}
+
+message PlaceMultipleOrdersRequest {
+    repeated NewOrderRequest batchOrders = 1;
+    int64 recvWindow = 2;
+}
+
+message PlaceMultipleOrdersResponse {
+    repeated NewOrderResponse batchOrders = 1;
+}
+
+message ModifyMultipleOrdersRequest {
+    repeated ModifyOrderRequest batchOrders = 1;
+    int64 recvWindow = 2;
+}
+
+message ModifyMultipleOrdersResponse {
+    repeated ModifyOrderResponse batchOrders = 1;
+}
+
+message CancelAllOpenOrdersRequest {
+    string symbol = 1;
+    int64 recvWindow = 2;
+}
+
+message CancelAllOpenOrdersResponse {
+    int32 code = 1;
+    string msg = 2;
+}
+
+message AutoCancelAllOpenOrdersRequest {
+    string symbol = 1;
+    int64 countdownTime = 2;
+    int64 recvWindow = 3;
+}
+
+message AutoCancelAllOpenOrdersResponse {
+    string symbol = 1;
+    int64 countdownTime = 2;
+}
+
+message ChangeInitialLeverageRequest {
+    string symbol = 1;
+    int32 leverage = 2;
+    int64 recvWindow = 3;
+}
+
+message ChangeInitialLeverageResponse {
+    string symbol = 1;
+    int32 leverage = 2;
+    int64 maxQty = 3;
+}
+
+message ChangeMarginTypeRequest {
+    string symbol = 1;
+    MarginType marginType = 2;
+    int64 recvWindow = 3;
+}
+
+message ChangeMarginTypeResponse {
+    int32 code = 1;
+    string msg = 2;
+}
+
+message ModifyIsolatedPositionMarginRequest{
+    string symbol = 1;
+    PositionSide positionSide = 2;
+    double amount = 3;
+    int32 type = 4;
+    int64 recvWindow = 5;
+}
+
+message ModifyIsolatedPositionMarginResponse {
+    double amount = 1;
+    int32 code = 2;
+    string msg = 3;
+    int32 type = 4;
+}
+
+message GetPositionMarginChangeHistoryRequest {
+    string symbol = 1;
+    int32 type = 2;
+    int64 startTime = 3;
+    int64 endTime = 4;
+    int32 limit = 5;
+    int64 recvWindow = 6;
+}
+
+message GetPositionMarginChangeHistoryResponse {
+    repeated PositionMargin positionMarginChangeHistory = 1;
+}
+
+// message CancelMultipleOrdersRequest{
+//     string symbol = 1;
+//     repeated int64 orderIdList = 2;
+//     repeated string origClientOrderIdList = 3;
+//     int64 recvWindow = 4;
+// }
+
+// message CancelMultipleOrdersResponse{
+
+// }

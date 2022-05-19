@@ -1,0 +1,9 @@
+make --dry-run --always-make --keep-going --print-directory
+make: Entering directory `/Users/songxianlin/Documents/coding/github/bingo-pkg-protobuf'
+echo
+echo "Choose a command to run in :"
+echo
+sed -n 's/^##//p' Makefile | column -t -s ':' | sed -e 's/^/ /'
+echo
+make: Leaving directory `/Users/songxianlin/Documents/coding/github/bingo-pkg-protobuf'
+ 

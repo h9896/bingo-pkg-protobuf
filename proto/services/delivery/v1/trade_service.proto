@@ -3,18 +3,53 @@ syntax = "proto3";
 package services.delivery.v1;
 
 import "services/delivery/v1/trade_msg.proto";
+import "services/delivery/v1/common.proto";
 
 option go_package = "github.com/h9896/bingo-pkg-proto/proto/services/delivery/v1;v1";
 
 
 service DeliveryTradeService {
+
     // Change user's position mode (Hedge Mode or One-way Mode ) on EVERY symbol
     rpc ChangePositionMode(ChangePositionModeRequest) returns (ChangePositionModeResponse){};
-    // Get user's position mode (Hedge Mode or One-way Mode ) on EVERY symbol
-    rpc GetPositionMode(Empty) returns (GetPositionModeResponse){};
+
     // Send in a new order.
     rpc NewOrder(NewOrderRequest) returns (NewOrderResponse){};
+
     // Cancel an active order.
     rpc CancelOrder(CancelOrderRequest) returns (CancelOrderResponse){};
 
+    // Order modify function, currently only LIMIT order modification is supported, 
+    // modified orders will be reordered in the match queue
+    rpc ModifyOrder(ModifyOrderRequest) returns (ModifyOrderResponse){};
+
+    // Place Multiple Orders 
+    rpc PlaceMultipleOrders(PlaceMultipleOrdersRequest) returns (PlaceMultipleOrdersResponse){};
+
+    // Modify Multiple Orders
+    rpc ModifyMultipleOrders(ModifyMultipleOrdersRequest) returns (ModifyMultipleOrdersResponse){};
+    
+    // Cancel All Open Orders
+    rpc CancelAllOpenOrders(CancelAllOpenOrdersRequest) returns (CancelAllOpenOrdersResponse){};
+
+    // Cancel all open orders of the specified symbol at the end of the specified countdown
+    rpc AutoCancelAllOpenOrder(AutoCancelAllOpenOrdersRequest) returns (AutoCancelAllOpenOrdersResponse){};
+
+    // Change user's initial leverage in the specific symbol market.
+    // For Hedge Mode, LONG and SHORT positions of one symbol use 
+    // the same initial leverage and share a total notional value.
+    rpc ChangeInitialLeverage(ChangeInitialLeverageRequest) returns (ChangeInitialLeverageResponse){};
+
+    // Change user's margin type in the specific symbol market.
+    /// For Hedge Mode, LONG and SHORT positions of 
+    // one symbol use the same margin type.
+    // With ISOLATED margin type, margins of 
+    // the LONG and SHORT positions are isolated from each other.
+    rpc ChangeMarginType(ChangeMarginTypeRequest) returns (ChangeMarginTypeResponse){};
+
+    // Modify Isolated Position Margin
+    rpc ModifyIsolatedPositionMargin(ModifyIsolatedPositionMarginRequest) returns (ModifyIsolatedPositionMarginResponse) {};
+
+    // Get Position Margin Change History
+    rpc GetPositionMarginChangeHistory(GetPositionMarginChangeHistoryRequest) returns (GetPositionMarginChangeHistoryResponse) {};
 }

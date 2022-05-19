@@ -24,12 +24,35 @@ const _ = grpc.SupportPackageIsVersion7
 type DeliveryTradeServiceClient interface {
 	// Change user's position mode (Hedge Mode or One-way Mode ) on EVERY symbol
 	ChangePositionMode(ctx context.Context, in *ChangePositionModeRequest, opts ...grpc.CallOption) (*ChangePositionModeResponse, error)
-	// Get user's position mode (Hedge Mode or One-way Mode ) on EVERY symbol
-	GetPositionMode(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*GetPositionModeResponse, error)
 	// Send in a new order.
 	NewOrder(ctx context.Context, in *NewOrderRequest, opts ...grpc.CallOption) (*NewOrderResponse, error)
 	// Cancel an active order.
 	CancelOrder(ctx context.Context, in *CancelOrderRequest, opts ...grpc.CallOption) (*CancelOrderResponse, error)
+	// Order modify function, currently only LIMIT order modification is supported,
+	// modified orders will be reordered in the match queue
+	ModifyOrder(ctx context.Context, in *ModifyOrderRequest, opts ...grpc.CallOption) (*ModifyOrderResponse, error)
+	// Place Multiple Orders
+	PlaceMultipleOrders(ctx context.Context, in *PlaceMultipleOrdersRequest, opts ...grpc.CallOption) (*PlaceMultipleOrdersResponse, error)
+	// Modify Multiple Orders
+	ModifyMultipleOrders(ctx context.Context, in *ModifyMultipleOrdersRequest, opts ...grpc.CallOption) (*ModifyMultipleOrdersResponse, error)
+	// Cancel All Open Orders
+	CancelAllOpenOrders(ctx context.Context, in *CancelAllOpenOrdersRequest, opts ...grpc.CallOption) (*CancelAllOpenOrdersResponse, error)
+	// Cancel all open orders of the specified symbol at the end of the specified countdown
+	AutoCancelAllOpenOrder(ctx context.Context, in *AutoCancelAllOpenOrdersRequest, opts ...grpc.CallOption) (*AutoCancelAllOpenOrdersResponse, error)
+	// Change user's initial leverage in the specific symbol market.
+	// For Hedge Mode, LONG and SHORT positions of one symbol use
+	// the same initial leverage and share a total notional value.
+	ChangeInitialLeverage(ctx context.Context, in *ChangeInitialLeverageRequest, opts ...grpc.CallOption) (*ChangeInitialLeverageResponse, error)
+	// Change user's margin type in the specific symbol market.
+	/// For Hedge Mode, LONG and SHORT positions of
+	// one symbol use the same margin type.
+	// With ISOLATED margin type, margins of
+	// the LONG and SHORT positions are isolated from each other.
+	ChangeMarginType(ctx context.Context, in *ChangeMarginTypeRequest, opts ...grpc.CallOption) (*ChangeMarginTypeResponse, error)
+	// Modify Isolated Position Margin
+	ModifyIsolatedPositionMargin(ctx context.Context, in *ModifyIsolatedPositionMarginRequest, opts ...grpc.CallOption) (*ModifyIsolatedPositionMarginResponse, error)
+	// Get Position Margin Change History
+	GetPositionMarginChangeHistory(ctx context.Context, in *GetPositionMarginChangeHistoryRequest, opts ...grpc.CallOption) (*GetPositionMarginChangeHistoryResponse, error)
 }
 
 type deliveryTradeServiceClient struct {
@@ -43,15 +66,6 @@ func NewDeliveryTradeServiceClient(cc grpc.ClientConnInterface) DeliveryTradeSer
 func (c *deliveryTradeServiceClient) ChangePositionMode(ctx context.Context, in *ChangePositionModeRequest, opts ...grpc.CallOption) (*ChangePositionModeResponse, error) {
 	out := new(ChangePositionModeResponse)
 	err := c.cc.Invoke(ctx, "/services.delivery.v1.DeliveryTradeService/ChangePositionMode", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *deliveryTradeServiceClient) GetPositionMode(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*GetPositionModeResponse, error) {
-	out := new(GetPositionModeResponse)
-	err := c.cc.Invoke(ctx, "/services.delivery.v1.DeliveryTradeService/GetPositionMode", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -76,18 +90,122 @@ func (c *deliveryTradeServiceClient) CancelOrder(ctx context.Context, in *Cancel
 	return out, nil
 }
 
+func (c *deliveryTradeServiceClient) ModifyOrder(ctx context.Context, in *ModifyOrderRequest, opts ...grpc.CallOption) (*ModifyOrderResponse, error) {
+	out := new(ModifyOrderResponse)
+	err := c.cc.Invoke(ctx, "/services.delivery.v1.DeliveryTradeService/ModifyOrder", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *deliveryTradeServiceClient) PlaceMultipleOrders(ctx context.Context, in *PlaceMultipleOrdersRequest, opts ...grpc.CallOption) (*PlaceMultipleOrdersResponse, error) {
+	out := new(PlaceMultipleOrdersResponse)
+	err := c.cc.Invoke(ctx, "/services.delivery.v1.DeliveryTradeService/PlaceMultipleOrders", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *deliveryTradeServiceClient) ModifyMultipleOrders(ctx context.Context, in *ModifyMultipleOrdersRequest, opts ...grpc.CallOption) (*ModifyMultipleOrdersResponse, error) {
+	out := new(ModifyMultipleOrdersResponse)
+	err := c.cc.Invoke(ctx, "/services.delivery.v1.DeliveryTradeService/ModifyMultipleOrders", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *deliveryTradeServiceClient) CancelAllOpenOrders(ctx context.Context, in *CancelAllOpenOrdersRequest, opts ...grpc.CallOption) (*CancelAllOpenOrdersResponse, error) {
+	out := new(CancelAllOpenOrdersResponse)
+	err := c.cc.Invoke(ctx, "/services.delivery.v1.DeliveryTradeService/CancelAllOpenOrders", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *deliveryTradeServiceClient) AutoCancelAllOpenOrder(ctx context.Context, in *AutoCancelAllOpenOrdersRequest, opts ...grpc.CallOption) (*AutoCancelAllOpenOrdersResponse, error) {
+	out := new(AutoCancelAllOpenOrdersResponse)
+	err := c.cc.Invoke(ctx, "/services.delivery.v1.DeliveryTradeService/AutoCancelAllOpenOrder", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *deliveryTradeServiceClient) ChangeInitialLeverage(ctx context.Context, in *ChangeInitialLeverageRequest, opts ...grpc.CallOption) (*ChangeInitialLeverageResponse, error) {
+	out := new(ChangeInitialLeverageResponse)
+	err := c.cc.Invoke(ctx, "/services.delivery.v1.DeliveryTradeService/ChangeInitialLeverage", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *deliveryTradeServiceClient) ChangeMarginType(ctx context.Context, in *ChangeMarginTypeRequest, opts ...grpc.CallOption) (*ChangeMarginTypeResponse, error) {
+	out := new(ChangeMarginTypeResponse)
+	err := c.cc.Invoke(ctx, "/services.delivery.v1.DeliveryTradeService/ChangeMarginType", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *deliveryTradeServiceClient) ModifyIsolatedPositionMargin(ctx context.Context, in *ModifyIsolatedPositionMarginRequest, opts ...grpc.CallOption) (*ModifyIsolatedPositionMarginResponse, error) {
+	out := new(ModifyIsolatedPositionMarginResponse)
+	err := c.cc.Invoke(ctx, "/services.delivery.v1.DeliveryTradeService/ModifyIsolatedPositionMargin", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *deliveryTradeServiceClient) GetPositionMarginChangeHistory(ctx context.Context, in *GetPositionMarginChangeHistoryRequest, opts ...grpc.CallOption) (*GetPositionMarginChangeHistoryResponse, error) {
+	out := new(GetPositionMarginChangeHistoryResponse)
+	err := c.cc.Invoke(ctx, "/services.delivery.v1.DeliveryTradeService/GetPositionMarginChangeHistory", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // DeliveryTradeServiceServer is the server API for DeliveryTradeService service.
 // All implementations should embed UnimplementedDeliveryTradeServiceServer
 // for forward compatibility
 type DeliveryTradeServiceServer interface {
 	// Change user's position mode (Hedge Mode or One-way Mode ) on EVERY symbol
 	ChangePositionMode(context.Context, *ChangePositionModeRequest) (*ChangePositionModeResponse, error)
-	// Get user's position mode (Hedge Mode or One-way Mode ) on EVERY symbol
-	GetPositionMode(context.Context, *Empty) (*GetPositionModeResponse, error)
 	// Send in a new order.
 	NewOrder(context.Context, *NewOrderRequest) (*NewOrderResponse, error)
 	// Cancel an active order.
 	CancelOrder(context.Context, *CancelOrderRequest) (*CancelOrderResponse, error)
+	// Order modify function, currently only LIMIT order modification is supported,
+	// modified orders will be reordered in the match queue
+	ModifyOrder(context.Context, *ModifyOrderRequest) (*ModifyOrderResponse, error)
+	// Place Multiple Orders
+	PlaceMultipleOrders(context.Context, *PlaceMultipleOrdersRequest) (*PlaceMultipleOrdersResponse, error)
+	// Modify Multiple Orders
+	ModifyMultipleOrders(context.Context, *ModifyMultipleOrdersRequest) (*ModifyMultipleOrdersResponse, error)
+	// Cancel All Open Orders
+	CancelAllOpenOrders(context.Context, *CancelAllOpenOrdersRequest) (*CancelAllOpenOrdersResponse, error)
+	// Cancel all open orders of the specified symbol at the end of the specified countdown
+	AutoCancelAllOpenOrder(context.Context, *AutoCancelAllOpenOrdersRequest) (*AutoCancelAllOpenOrdersResponse, error)
+	// Change user's initial leverage in the specific symbol market.
+	// For Hedge Mode, LONG and SHORT positions of one symbol use
+	// the same initial leverage and share a total notional value.
+	ChangeInitialLeverage(context.Context, *ChangeInitialLeverageRequest) (*ChangeInitialLeverageResponse, error)
+	// Change user's margin type in the specific symbol market.
+	/// For Hedge Mode, LONG and SHORT positions of
+	// one symbol use the same margin type.
+	// With ISOLATED margin type, margins of
+	// the LONG and SHORT positions are isolated from each other.
+	ChangeMarginType(context.Context, *ChangeMarginTypeRequest) (*ChangeMarginTypeResponse, error)
+	// Modify Isolated Position Margin
+	ModifyIsolatedPositionMargin(context.Context, *ModifyIsolatedPositionMarginRequest) (*ModifyIsolatedPositionMarginResponse, error)
+	// Get Position Margin Change History
+	GetPositionMarginChangeHistory(context.Context, *GetPositionMarginChangeHistoryRequest) (*GetPositionMarginChangeHistoryResponse, error)
 }
 
 // UnimplementedDeliveryTradeServiceServer should be embedded to have forward compatible implementations.
@@ -97,14 +215,38 @@ type UnimplementedDeliveryTradeServiceServer struct {
 func (UnimplementedDeliveryTradeServiceServer) ChangePositionMode(context.Context, *ChangePositionModeRequest) (*ChangePositionModeResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ChangePositionMode not implemented")
 }
-func (UnimplementedDeliveryTradeServiceServer) GetPositionMode(context.Context, *Empty) (*GetPositionModeResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetPositionMode not implemented")
-}
 func (UnimplementedDeliveryTradeServiceServer) NewOrder(context.Context, *NewOrderRequest) (*NewOrderResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method NewOrder not implemented")
 }
 func (UnimplementedDeliveryTradeServiceServer) CancelOrder(context.Context, *CancelOrderRequest) (*CancelOrderResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CancelOrder not implemented")
+}
+func (UnimplementedDeliveryTradeServiceServer) ModifyOrder(context.Context, *ModifyOrderRequest) (*ModifyOrderResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ModifyOrder not implemented")
+}
+func (UnimplementedDeliveryTradeServiceServer) PlaceMultipleOrders(context.Context, *PlaceMultipleOrdersRequest) (*PlaceMultipleOrdersResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method PlaceMultipleOrders not implemented")
+}
+func (UnimplementedDeliveryTradeServiceServer) ModifyMultipleOrders(context.Context, *ModifyMultipleOrdersRequest) (*ModifyMultipleOrdersResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ModifyMultipleOrders not implemented")
+}
+func (UnimplementedDeliveryTradeServiceServer) CancelAllOpenOrders(context.Context, *CancelAllOpenOrdersRequest) (*CancelAllOpenOrdersResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CancelAllOpenOrders not implemented")
+}
+func (UnimplementedDeliveryTradeServiceServer) AutoCancelAllOpenOrder(context.Context, *AutoCancelAllOpenOrdersRequest) (*AutoCancelAllOpenOrdersResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method AutoCancelAllOpenOrder not implemented")
+}
+func (UnimplementedDeliveryTradeServiceServer) ChangeInitialLeverage(context.Context, *ChangeInitialLeverageRequest) (*ChangeInitialLeverageResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ChangeInitialLeverage not implemented")
+}
+func (UnimplementedDeliveryTradeServiceServer) ChangeMarginType(context.Context, *ChangeMarginTypeRequest) (*ChangeMarginTypeResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ChangeMarginType not implemented")
+}
+func (UnimplementedDeliveryTradeServiceServer) ModifyIsolatedPositionMargin(context.Context, *ModifyIsolatedPositionMarginRequest) (*ModifyIsolatedPositionMarginResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ModifyIsolatedPositionMargin not implemented")
+}
+func (UnimplementedDeliveryTradeServiceServer) GetPositionMarginChangeHistory(context.Context, *GetPositionMarginChangeHistoryRequest) (*GetPositionMarginChangeHistoryResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetPositionMarginChangeHistory not implemented")
 }
 
 // UnsafeDeliveryTradeServiceServer may be embedded to opt out of forward compatibility for this service.
@@ -132,24 +274,6 @@ func _DeliveryTradeService_ChangePositionMode_Handler(srv interface{}, ctx conte
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(DeliveryTradeServiceServer).ChangePositionMode(ctx, req.(*ChangePositionModeRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _DeliveryTradeService_GetPositionMode_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(Empty)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(DeliveryTradeServiceServer).GetPositionMode(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/services.delivery.v1.DeliveryTradeService/GetPositionMode",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(DeliveryTradeServiceServer).GetPositionMode(ctx, req.(*Empty))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -190,6 +314,168 @@ func _DeliveryTradeService_CancelOrder_Handler(srv interface{}, ctx context.Cont
 	return interceptor(ctx, in, info, handler)
 }
 
+func _DeliveryTradeService_ModifyOrder_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ModifyOrderRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(DeliveryTradeServiceServer).ModifyOrder(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/services.delivery.v1.DeliveryTradeService/ModifyOrder",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(DeliveryTradeServiceServer).ModifyOrder(ctx, req.(*ModifyOrderRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _DeliveryTradeService_PlaceMultipleOrders_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(PlaceMultipleOrdersRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(DeliveryTradeServiceServer).PlaceMultipleOrders(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/services.delivery.v1.DeliveryTradeService/PlaceMultipleOrders",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(DeliveryTradeServiceServer).PlaceMultipleOrders(ctx, req.(*PlaceMultipleOrdersRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _DeliveryTradeService_ModifyMultipleOrders_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ModifyMultipleOrdersRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(DeliveryTradeServiceServer).ModifyMultipleOrders(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/services.delivery.v1.DeliveryTradeService/ModifyMultipleOrders",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(DeliveryTradeServiceServer).ModifyMultipleOrders(ctx, req.(*ModifyMultipleOrdersRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _DeliveryTradeService_CancelAllOpenOrders_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CancelAllOpenOrdersRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(DeliveryTradeServiceServer).CancelAllOpenOrders(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/services.delivery.v1.DeliveryTradeService/CancelAllOpenOrders",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(DeliveryTradeServiceServer).CancelAllOpenOrders(ctx, req.(*CancelAllOpenOrdersRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _DeliveryTradeService_AutoCancelAllOpenOrder_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(AutoCancelAllOpenOrdersRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(DeliveryTradeServiceServer).AutoCancelAllOpenOrder(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/services.delivery.v1.DeliveryTradeService/AutoCancelAllOpenOrder",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(DeliveryTradeServiceServer).AutoCancelAllOpenOrder(ctx, req.(*AutoCancelAllOpenOrdersRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _DeliveryTradeService_ChangeInitialLeverage_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ChangeInitialLeverageRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(DeliveryTradeServiceServer).ChangeInitialLeverage(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/services.delivery.v1.DeliveryTradeService/ChangeInitialLeverage",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(DeliveryTradeServiceServer).ChangeInitialLeverage(ctx, req.(*ChangeInitialLeverageRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _DeliveryTradeService_ChangeMarginType_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ChangeMarginTypeRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(DeliveryTradeServiceServer).ChangeMarginType(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/services.delivery.v1.DeliveryTradeService/ChangeMarginType",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(DeliveryTradeServiceServer).ChangeMarginType(ctx, req.(*ChangeMarginTypeRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _DeliveryTradeService_ModifyIsolatedPositionMargin_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ModifyIsolatedPositionMarginRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(DeliveryTradeServiceServer).ModifyIsolatedPositionMargin(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/services.delivery.v1.DeliveryTradeService/ModifyIsolatedPositionMargin",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(DeliveryTradeServiceServer).ModifyIsolatedPositionMargin(ctx, req.(*ModifyIsolatedPositionMarginRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _DeliveryTradeService_GetPositionMarginChangeHistory_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetPositionMarginChangeHistoryRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(DeliveryTradeServiceServer).GetPositionMarginChangeHistory(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/services.delivery.v1.DeliveryTradeService/GetPositionMarginChangeHistory",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(DeliveryTradeServiceServer).GetPositionMarginChangeHistory(ctx, req.(*GetPositionMarginChangeHistoryRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // DeliveryTradeService_ServiceDesc is the grpc.ServiceDesc for DeliveryTradeService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -202,16 +488,48 @@ var DeliveryTradeService_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _DeliveryTradeService_ChangePositionMode_Handler,
 		},
 		{
-			MethodName: "GetPositionMode",
-			Handler:    _DeliveryTradeService_GetPositionMode_Handler,
-		},
-		{
 			MethodName: "NewOrder",
 			Handler:    _DeliveryTradeService_NewOrder_Handler,
 		},
 		{
 			MethodName: "CancelOrder",
 			Handler:    _DeliveryTradeService_CancelOrder_Handler,
+		},
+		{
+			MethodName: "ModifyOrder",
+			Handler:    _DeliveryTradeService_ModifyOrder_Handler,
+		},
+		{
+			MethodName: "PlaceMultipleOrders",
+			Handler:    _DeliveryTradeService_PlaceMultipleOrders_Handler,
+		},
+		{
+			MethodName: "ModifyMultipleOrders",
+			Handler:    _DeliveryTradeService_ModifyMultipleOrders_Handler,
+		},
+		{
+			MethodName: "CancelAllOpenOrders",
+			Handler:    _DeliveryTradeService_CancelAllOpenOrders_Handler,
+		},
+		{
+			MethodName: "AutoCancelAllOpenOrder",
+			Handler:    _DeliveryTradeService_AutoCancelAllOpenOrder_Handler,
+		},
+		{
+			MethodName: "ChangeInitialLeverage",
+			Handler:    _DeliveryTradeService_ChangeInitialLeverage_Handler,
+		},
+		{
+			MethodName: "ChangeMarginType",
+			Handler:    _DeliveryTradeService_ChangeMarginType_Handler,
+		},
+		{
+			MethodName: "ModifyIsolatedPositionMargin",
+			Handler:    _DeliveryTradeService_ModifyIsolatedPositionMargin_Handler,
+		},
+		{
+			MethodName: "GetPositionMarginChangeHistory",
+			Handler:    _DeliveryTradeService_GetPositionMarginChangeHistory_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

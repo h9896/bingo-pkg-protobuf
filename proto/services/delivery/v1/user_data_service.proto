@@ -1,0 +1,39 @@
+syntax = "proto3";
+
+package services.delivery.v1;
+
+import "services/delivery/v1/user_data_msg.proto";
+import "services/delivery/v1/common.proto";
+
+option go_package = "github.com/h9896/bingo-pkg-proto/proto/services/delivery/v1;v1";
+
+service DeliveryUserDataService {
+
+    // Get order modification history
+    rpc GetOrderModifyHistory(GetOrderModifyHistoryRequest) returns (GetOrderModifyHistoryResponse){};
+
+    // Check an order's status
+    rpc QueryOrder(QueryOrderRequest) returns (QueryOrderResponse){};
+
+    // Get user's position mode (Hedge Mode or One-way Mode ) on EVERY symbol
+    rpc GetPositionMode(Empty) returns (GetPositionModeResponse){};
+
+    // Query Current Open Order
+    rpc QueryCurrentOpenOrder(QueryCurrentOpenOrderRequest) returns (QueryCurrentOpenOrderResponse){};
+
+    // Get all open orders on a symbol. 
+    // Careful when accessing this with no symbol.
+    rpc CurrentAllOpenOrders(CurrentAllOpenOrdersRequest) returns (CurrentAllOpenOrdersResponse){};
+
+    // Get all account orders; active, canceled, or filled.
+    rpc AllOrders(AllOrdersRequest) returns (AllOrdersResponse){};
+
+    // Futures Account Balance
+    rpc FuturesAccountBalance(Empty) returns (FuturesAccountBalanceResponse){};
+
+    // Get current account information.
+    // rpc AccountInformation(Empty) returns (){};
+
+    // Position Information
+    rpc PositionInformation(PositionInformationRequest) returns (PositionInformationResponse){};
+}

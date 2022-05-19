@@ -1,0 +1,127 @@
+syntax = "proto3";
+
+package services.delivery.v1;
+
+option go_package = "github.com/h9896/bingo-pkg-proto/proto/services/delivery/v1;v1";
+
+
+enum OrderSide {
+    ORDER_SIDE_UNSPECIFIED = 0;
+    BUY = 1;
+    SELL = 2;
+}
+
+enum PositionSide {
+    BOTH = 0;
+    LONG = 1;
+    SHORT= 2;
+}
+
+enum OrderType {
+    ORDER_TYPE_UNSPECIFIED = 0;
+    LIMIT = 1;
+    MARKET = 2;
+    STOP = 3;
+    STOP_MARKET = 4;
+    TAKE_PROFIT = 5;
+    TAKE_PROFIT_MARKET = 6;
+    TRAILING_STOP_MARKET = 7;
+}
+
+enum TimeInForce {
+    TIME_IN_FORCE_UNSPECIFIED = 0;
+    // Good till cancel
+    GTC = 1;
+    // Immediate or Cancel
+    IOC = 2;
+    // Fill or Kill
+    FOK = 3;
+    // Good till crossing
+    GTX = 4;
+}
+
+enum WorkingType {
+    WORKING_TYPE_UNSPECIFIED = 0;
+    MARK_PRICE = 1;
+    CONTRACT_PRICE = 2;
+}
+
+enum ResponseType {
+    RESPONSE_TYPE_UNSPECIFIED = 0;
+    ACK = 1;
+    RESULT = 2;
+}
+
+enum OrderStatus {
+    ORDER_STATUS_UNSPECIFIED = 0;
+    NEW = 1;
+    PARTIALLY_FILLED = 2;
+    FILLED = 3;
+    CANCELED = 4;
+    EXPIRED = 5;
+}
+
+enum MarginType {
+    MARGIN_TYPE_UNSPECIFIED = 0;
+    ISOLATED = 1;
+    CROSSED = 2;
+}
+
+message Empty{}
+
+message PositionMargin {
+    double amount = 1;
+    string asset = 2;
+    string symbol = 3;
+    double time = 4;
+    int32 type = 5;
+    PositionSide positionSide = 6;
+}
+
+message OrderModifyHistory {
+    int64 amendmentId = 1;
+    string symbol = 2;
+    string pair = 3;
+    int64 orderId = 4;
+    string clientOrderId = 5;
+    int64 time = 6;
+    Amendment amendment = 7;
+}
+
+message Amendment {
+    History price = 1;
+    History origQty= 2;
+    int32 count = 3;
+}
+
+message History {
+    double before = 1;
+    double after = 2;
+}
+
+message Balance {
+    string accountAlias = 1;
+    string asset = 2;
+    double balance = 3;
+    double withdrawAvailable = 4;
+    double crossWalletBalance = 5;
+    double crossUnPnl = 6;
+    double availableBalance = 7;
+    int64 updateTime = 8;
+}
+
+message Position {
+    string symbol = 1;
+    int64 positionAmt = 2;
+    double entryPrice = 3;
+    double markPrice = 4;
+    double unRealizedProfit = 5;
+    int64 liquidationPrice = 6;
+    int32 leverage = 7;
+    int64 maxQty = 8;
+    MarginType marginType = 9;
+    double isolatedMargin = 10;
+    bool isAutoAddMargin = 11;
+    PositionSide positionSide = 12;
+    int64 updateTime = 13;
+}

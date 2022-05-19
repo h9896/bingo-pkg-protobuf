@@ -1,0 +1,132 @@
+syntax = "proto3";
+
+package services.delivery.v1;
+
+import "services/delivery/v1/trade_msg.proto";
+import "services/delivery/v1/common.proto";
+
+option go_package = "github.com/h9896/bingo-pkg-proto/proto/services/delivery/v1;v1";
+
+message GetOrderModifyHistoryRequest {
+    string symbol = 1;
+    int64 orderId = 2;
+    string origClientOrderId = 3;
+    int64 startTime = 4;
+    int64 endTime = 5;
+    int32 limit = 6;
+    int64 recvWindow = 7;
+}
+
+message GetOrderModifyHistoryResponse {
+    repeated OrderModifyHistory orderModifyHistory = 1;
+}
+
+message QueryOrderRequest{
+    string symbol = 1;
+    int64 orderId = 2;
+    string origClientOrderId = 3;
+    int64 recvWindow = 4;
+} 
+
+message QueryOrderResponse {
+    string clientOrderId = 1;
+    int64 time = 2;
+    double cumBase = 3;
+    double executedQty = 4;
+    int64 orderId = 5;
+    double avgPrice = 6;
+    double origQty = 7;
+    double price = 8;
+    bool reduceOnly = 9;
+    OrderSide side = 10;
+    OrderStatus status = 11;
+    double stopPrice = 12;
+    bool closePosition = 13;
+    string symbol = 14;
+    string pair = 15;
+    TimeInForce timeInForce = 16;
+    OrderType type = 17;
+    OrderType origType = 18;
+    double activatePrice = 19;
+    double priceRate = 20;
+    int64 updateTime = 21;
+    WorkingType workingType = 22;
+    bool priceProtect = 23;
+    PositionSide positionSide = 24;
+}
+
+message GetPositionModeResponse {
+    bool dualSidePosition = 1;
+}
+
+message QueryCurrentOpenOrderRequest {
+    string symbol = 1;
+    int64 orderId = 2;
+    string origClientOrderId = 3;
+    int64 recvWindow = 4;
+}
+
+message QueryCurrentOpenOrderResponse {
+    string clientOrderId = 1;
+    int64 time = 2;
+    double cumBase = 3;
+    double executedQty = 4;
+    int64 orderId = 5;
+    double avgPrice = 6;
+    double origQty = 7;
+    double price = 8;
+    bool reduceOnly = 9;
+    OrderSide side = 10;
+    OrderStatus status = 11;
+    double stopPrice = 12;
+    bool closePosition = 13;
+    string symbol = 14;
+    string pair = 15;
+    TimeInForce timeInForce = 16;
+    OrderType type = 17;
+    OrderType origType = 18;
+    double activatePrice = 19;
+    double priceRate = 20;
+    int64 updateTime = 21;
+    WorkingType workingType = 22;
+    bool priceProtect = 23;
+    PositionSide positionSide = 24;
+}
+
+message CurrentAllOpenOrdersRequest{
+    string symbol = 1;
+    string pair = 2;
+    int64 recvWindow = 3;
+}
+
+message CurrentAllOpenOrdersResponse {
+    repeated QueryCurrentOpenOrderResponse currentAllOpenOrders = 1;
+}
+
+message AllOrdersRequest {
+    string symbol = 1;
+    string pair = 2;
+    int64 orderId = 3;
+    int64 startTime = 4;
+    int64 endTime = 5;
+    int32 limit = 6;
+    int64 recvWindow = 7;
+}
+
+message AllOrdersResponse {
+    repeated QueryCurrentOpenOrderResponse allOrders = 1;
+}
+
+message FuturesAccountBalanceResponse {
+    repeated Balance futuresAccountBalance = 1;
+}
+
+message PositionInformationRequest {
+    string marginAsset = 1;
+    string pair = 2;
+    int64 recvWindow = 3;
+}
+
+message PositionInformationResponse {
+    repeated Position positions = 1;
+}
