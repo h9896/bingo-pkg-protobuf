@@ -130,3 +130,114 @@ message PositionInformationRequest {
 message PositionInformationResponse {
     repeated Position positions = 1;
 }
+
+message AccountInformationResponse{
+    repeated Asset assets = 1;
+    repeated Position positions = 2;
+    bool canDeposit = 3;
+    bool canTrade = 4;
+    bool canWithdraw = 5;
+    int64 feeTier = 6;
+    int64 updateTime = 7;
+}
+
+message GetPositionMarginChangeHistoryRequest {
+    string symbol = 1;
+    int32 type = 2;
+    int64 startTime = 3;
+    int64 endTime = 4;
+    int32 limit = 5;
+    int64 recvWindow = 6;
+}
+
+message GetPositionMarginChangeHistoryResponse {
+    repeated PositionMargin positionMargins = 1;
+}
+
+message AccountTradeListRequest {
+    string symbol = 1;
+    string pair = 2;
+    int64 startTime = 3;
+    int64 endTime = 4;
+    int64 fromId = 5;
+    int32 limit = 6;
+    int64 recvWindow = 7;
+}
+
+message AccountTradeListResponse {
+    repeated AccountTrade accountTrades = 1;    
+}
+
+message GetIncomeHistoryRequest {
+    string symbol = 1;
+    IncomeType incomeType = 2;
+    int64 startTime = 3;
+    int64 endTime = 4;
+    int32 limit = 5;
+    int64 recvWindow = 6;
+}
+
+message IncomeHistory {
+    string symbol = 1;
+    IncomeType incomeType = 2;
+    double income = 3;
+    string asset = 4;
+    string info = 5;
+    int64 time = 6;
+    string tranId = 7;
+    string tradeId = 8;
+}
+
+message GetIncomeHistoryResponse {
+    repeated IncomeHistory incomes = 1;
+}
+
+message NotionalBracketForSymbolRequest {
+    string pair = 1;
+    int64 recvWindow = 2;
+}
+
+message Bracket {
+    int32 bracket = 1;
+    int32 initialLeverage = 2;
+    double qtyCap = 3;
+    double qtylFloor = 4;
+    double maintMarginRatio = 5;
+    double cum = 6;
+}
+
+message NotionalBracketForSymbol {
+    string pair = 1;
+    repeated Bracket brackets = 2;
+}
+
+message NotionalBracketForSymbolResponse {
+    repeated NotionalBracketForSymbol brackets = 1;
+}
+
+message NotionalBracketForPairRequest {
+    string symbol = 1;
+    int64 recvWindow = 2;
+}
+
+message NotionalBracketForPair {
+    string symbol = 1;
+    repeated Bracket brackets = 2;
+}
+
+message NotionalBracketForPairResponse {
+    repeated NotionalBracketForPair brackets = 1;
+}
+
+// message UsersForceOrdersRequest {
+//     string symbol = 1;
+//     AutoCloseType autoCloseType = 2;
+//     int64 startTime = 3;
+//     int64 endTime = 4;
+//     int32 limit = 5;
+//     int64 recvWindow = 6;
+// }
+
+// message UsersForceOrdersResponse {
+//     repeated 
+// }

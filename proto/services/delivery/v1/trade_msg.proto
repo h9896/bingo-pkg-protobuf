@@ -210,19 +210,6 @@ message ModifyIsolatedPositionMarginResponse {
     int32 type = 4;
 }
 
-message GetPositionMarginChangeHistoryRequest {
-    string symbol = 1;
-    int32 type = 2;
-    int64 startTime = 3;
-    int64 endTime = 4;
-    int32 limit = 5;
-    int64 recvWindow = 6;
-}
-
-message GetPositionMarginChangeHistoryResponse {
-    repeated PositionMargin positionMarginChangeHistory = 1;
-}
-
 // message CancelMultipleOrdersRequest{
 //     string symbol = 1;
 //     repeated int64 orderIdList = 2;

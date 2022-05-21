@@ -39,6 +39,18 @@ type DeliveryUserDataServiceClient interface {
 	FuturesAccountBalance(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*FuturesAccountBalanceResponse, error)
 	// Position Information
 	PositionInformation(ctx context.Context, in *PositionInformationRequest, opts ...grpc.CallOption) (*PositionInformationResponse, error)
+	// Get current account information.
+	AccountInformation(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*AccountInformationResponse, error)
+	// Get Position Margin Change History
+	GetPositionMarginChangeHistory(ctx context.Context, in *GetPositionMarginChangeHistoryRequest, opts ...grpc.CallOption) (*GetPositionMarginChangeHistoryResponse, error)
+	// Get trades for a specific account and symbol.
+	AccountTradeList(ctx context.Context, in *AccountTradeListRequest, opts ...grpc.CallOption) (*AccountTradeListResponse, error)
+	// Get Income History
+	GetIncomeHistory(ctx context.Context, in *GetIncomeHistoryRequest, opts ...grpc.CallOption) (*GetIncomeHistoryResponse, error)
+	// Get the pair's default notional bracket list.
+	NotionalBracketForSymbol(ctx context.Context, in *NotionalBracketForSymbolRequest, opts ...grpc.CallOption) (*NotionalBracketForSymbolResponse, error)
+	// Get the symbol's notional bracket list.
+	NotionalBracketForPair(ctx context.Context, in *NotionalBracketForPairRequest, opts ...grpc.CallOption) (*NotionalBracketForPairResponse, error)
 }
 
 type deliveryUserDataServiceClient struct {
@@ -121,6 +133,60 @@ func (c *deliveryUserDataServiceClient) PositionInformation(ctx context.Context,
 	return out, nil
 }
 
+func (c *deliveryUserDataServiceClient) AccountInformation(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*AccountInformationResponse, error) {
+	out := new(AccountInformationResponse)
+	err := c.cc.Invoke(ctx, "/services.delivery.v1.DeliveryUserDataService/AccountInformation", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *deliveryUserDataServiceClient) GetPositionMarginChangeHistory(ctx context.Context, in *GetPositionMarginChangeHistoryRequest, opts ...grpc.CallOption) (*GetPositionMarginChangeHistoryResponse, error) {
+	out := new(GetPositionMarginChangeHistoryResponse)
+	err := c.cc.Invoke(ctx, "/services.delivery.v1.DeliveryUserDataService/GetPositionMarginChangeHistory", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *deliveryUserDataServiceClient) AccountTradeList(ctx context.Context, in *AccountTradeListRequest, opts ...grpc.CallOption) (*AccountTradeListResponse, error) {
+	out := new(AccountTradeListResponse)
+	err := c.cc.Invoke(ctx, "/services.delivery.v1.DeliveryUserDataService/AccountTradeList", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *deliveryUserDataServiceClient) GetIncomeHistory(ctx context.Context, in *GetIncomeHistoryRequest, opts ...grpc.CallOption) (*GetIncomeHistoryResponse, error) {
+	out := new(GetIncomeHistoryResponse)
+	err := c.cc.Invoke(ctx, "/services.delivery.v1.DeliveryUserDataService/GetIncomeHistory", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *deliveryUserDataServiceClient) NotionalBracketForSymbol(ctx context.Context, in *NotionalBracketForSymbolRequest, opts ...grpc.CallOption) (*NotionalBracketForSymbolResponse, error) {
+	out := new(NotionalBracketForSymbolResponse)
+	err := c.cc.Invoke(ctx, "/services.delivery.v1.DeliveryUserDataService/NotionalBracketForSymbol", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *deliveryUserDataServiceClient) NotionalBracketForPair(ctx context.Context, in *NotionalBracketForPairRequest, opts ...grpc.CallOption) (*NotionalBracketForPairResponse, error) {
+	out := new(NotionalBracketForPairResponse)
+	err := c.cc.Invoke(ctx, "/services.delivery.v1.DeliveryUserDataService/NotionalBracketForPair", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // DeliveryUserDataServiceServer is the server API for DeliveryUserDataService service.
 // All implementations should embed UnimplementedDeliveryUserDataServiceServer
 // for forward compatibility
@@ -142,6 +208,18 @@ type DeliveryUserDataServiceServer interface {
 	FuturesAccountBalance(context.Context, *Empty) (*FuturesAccountBalanceResponse, error)
 	// Position Information
 	PositionInformation(context.Context, *PositionInformationRequest) (*PositionInformationResponse, error)
+	// Get current account information.
+	AccountInformation(context.Context, *Empty) (*AccountInformationResponse, error)
+	// Get Position Margin Change History
+	GetPositionMarginChangeHistory(context.Context, *GetPositionMarginChangeHistoryRequest) (*GetPositionMarginChangeHistoryResponse, error)
+	// Get trades for a specific account and symbol.
+	AccountTradeList(context.Context, *AccountTradeListRequest) (*AccountTradeListResponse, error)
+	// Get Income History
+	GetIncomeHistory(context.Context, *GetIncomeHistoryRequest) (*GetIncomeHistoryResponse, error)
+	// Get the pair's default notional bracket list.
+	NotionalBracketForSymbol(context.Context, *NotionalBracketForSymbolRequest) (*NotionalBracketForSymbolResponse, error)
+	// Get the symbol's notional bracket list.
+	NotionalBracketForPair(context.Context, *NotionalBracketForPairRequest) (*NotionalBracketForPairResponse, error)
 }
 
 // UnimplementedDeliveryUserDataServiceServer should be embedded to have forward compatible implementations.
@@ -171,6 +249,24 @@ func (UnimplementedDeliveryUserDataServiceServer) FuturesAccountBalance(context.
 }
 func (UnimplementedDeliveryUserDataServiceServer) PositionInformation(context.Context, *PositionInformationRequest) (*PositionInformationResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method PositionInformation not implemented")
+}
+func (UnimplementedDeliveryUserDataServiceServer) AccountInformation(context.Context, *Empty) (*AccountInformationResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method AccountInformation not implemented")
+}
+func (UnimplementedDeliveryUserDataServiceServer) GetPositionMarginChangeHistory(context.Context, *GetPositionMarginChangeHistoryRequest) (*GetPositionMarginChangeHistoryResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetPositionMarginChangeHistory not implemented")
+}
+func (UnimplementedDeliveryUserDataServiceServer) AccountTradeList(context.Context, *AccountTradeListRequest) (*AccountTradeListResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method AccountTradeList not implemented")
+}
+func (UnimplementedDeliveryUserDataServiceServer) GetIncomeHistory(context.Context, *GetIncomeHistoryRequest) (*GetIncomeHistoryResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetIncomeHistory not implemented")
+}
+func (UnimplementedDeliveryUserDataServiceServer) NotionalBracketForSymbol(context.Context, *NotionalBracketForSymbolRequest) (*NotionalBracketForSymbolResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method NotionalBracketForSymbol not implemented")
+}
+func (UnimplementedDeliveryUserDataServiceServer) NotionalBracketForPair(context.Context, *NotionalBracketForPairRequest) (*NotionalBracketForPairResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method NotionalBracketForPair not implemented")
 }
 
 // UnsafeDeliveryUserDataServiceServer may be embedded to opt out of forward compatibility for this service.
@@ -328,6 +424,114 @@ func _DeliveryUserDataService_PositionInformation_Handler(srv interface{}, ctx c
 	return interceptor(ctx, in, info, handler)
 }
 
+func _DeliveryUserDataService_AccountInformation_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(Empty)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(DeliveryUserDataServiceServer).AccountInformation(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/services.delivery.v1.DeliveryUserDataService/AccountInformation",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(DeliveryUserDataServiceServer).AccountInformation(ctx, req.(*Empty))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _DeliveryUserDataService_GetPositionMarginChangeHistory_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetPositionMarginChangeHistoryRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(DeliveryUserDataServiceServer).GetPositionMarginChangeHistory(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/services.delivery.v1.DeliveryUserDataService/GetPositionMarginChangeHistory",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(DeliveryUserDataServiceServer).GetPositionMarginChangeHistory(ctx, req.(*GetPositionMarginChangeHistoryRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _DeliveryUserDataService_AccountTradeList_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(AccountTradeListRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(DeliveryUserDataServiceServer).AccountTradeList(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/services.delivery.v1.DeliveryUserDataService/AccountTradeList",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(DeliveryUserDataServiceServer).AccountTradeList(ctx, req.(*AccountTradeListRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _DeliveryUserDataService_GetIncomeHistory_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetIncomeHistoryRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(DeliveryUserDataServiceServer).GetIncomeHistory(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/services.delivery.v1.DeliveryUserDataService/GetIncomeHistory",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(DeliveryUserDataServiceServer).GetIncomeHistory(ctx, req.(*GetIncomeHistoryRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _DeliveryUserDataService_NotionalBracketForSymbol_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(NotionalBracketForSymbolRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(DeliveryUserDataServiceServer).NotionalBracketForSymbol(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/services.delivery.v1.DeliveryUserDataService/NotionalBracketForSymbol",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(DeliveryUserDataServiceServer).NotionalBracketForSymbol(ctx, req.(*NotionalBracketForSymbolRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _DeliveryUserDataService_NotionalBracketForPair_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(NotionalBracketForPairRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(DeliveryUserDataServiceServer).NotionalBracketForPair(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/services.delivery.v1.DeliveryUserDataService/NotionalBracketForPair",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(DeliveryUserDataServiceServer).NotionalBracketForPair(ctx, req.(*NotionalBracketForPairRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // DeliveryUserDataService_ServiceDesc is the grpc.ServiceDesc for DeliveryUserDataService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -366,6 +570,30 @@ var DeliveryUserDataService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "PositionInformation",
 			Handler:    _DeliveryUserDataService_PositionInformation_Handler,
+		},
+		{
+			MethodName: "AccountInformation",
+			Handler:    _DeliveryUserDataService_AccountInformation_Handler,
+		},
+		{
+			MethodName: "GetPositionMarginChangeHistory",
+			Handler:    _DeliveryUserDataService_GetPositionMarginChangeHistory_Handler,
+		},
+		{
+			MethodName: "AccountTradeList",
+			Handler:    _DeliveryUserDataService_AccountTradeList_Handler,
+		},
+		{
+			MethodName: "GetIncomeHistory",
+			Handler:    _DeliveryUserDataService_GetIncomeHistory_Handler,
+		},
+		{
+			MethodName: "NotionalBracketForSymbol",
+			Handler:    _DeliveryUserDataService_NotionalBracketForSymbol_Handler,
+		},
+		{
+			MethodName: "NotionalBracketForPair",
+			Handler:    _DeliveryUserDataService_NotionalBracketForPair_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

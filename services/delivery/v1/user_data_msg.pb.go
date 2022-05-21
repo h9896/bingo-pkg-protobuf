@@ -1222,6 +1222,1015 @@ func (x *PositionInformationResponse) GetPositions() []*Position {
 	return nil
 }
 
+type AccountInformationResponse struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Assets      []*Asset    `protobuf:"bytes,1,rep,name=assets,proto3" json:"assets,omitempty"`
+	Positions   []*Position `protobuf:"bytes,2,rep,name=positions,proto3" json:"positions,omitempty"`
+	CanDeposit  bool        `protobuf:"varint,3,opt,name=canDeposit,proto3" json:"canDeposit,omitempty"`
+	CanTrade    bool        `protobuf:"varint,4,opt,name=canTrade,proto3" json:"canTrade,omitempty"`
+	CanWithdraw bool        `protobuf:"varint,5,opt,name=canWithdraw,proto3" json:"canWithdraw,omitempty"`
+	FeeTier     int64       `protobuf:"varint,6,opt,name=feeTier,proto3" json:"feeTier,omitempty"`
+	UpdateTime  int64       `protobuf:"varint,7,opt,name=updateTime,proto3" json:"updateTime,omitempty"`
+}
+
+func (x *AccountInformationResponse) Reset() {
+	*x = AccountInformationResponse{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_services_delivery_v1_user_data_msg_proto_msgTypes[14]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *AccountInformationResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*AccountInformationResponse) ProtoMessage() {}
+
+func (x *AccountInformationResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_services_delivery_v1_user_data_msg_proto_msgTypes[14]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use AccountInformationResponse.ProtoReflect.Descriptor instead.
+func (*AccountInformationResponse) Descriptor() ([]byte, []int) {
+	return file_services_delivery_v1_user_data_msg_proto_rawDescGZIP(), []int{14}
+}
+
+func (x *AccountInformationResponse) GetAssets() []*Asset {
+	if x != nil {
+		return x.Assets
+	}
+	return nil
+}
+
+func (x *AccountInformationResponse) GetPositions() []*Position {
+	if x != nil {
+		return x.Positions
+	}
+	return nil
+}
+
+func (x *AccountInformationResponse) GetCanDeposit() bool {
+	if x != nil {
+		return x.CanDeposit
+	}
+	return false
+}
+
+func (x *AccountInformationResponse) GetCanTrade() bool {
+	if x != nil {
+		return x.CanTrade
+	}
+	return false
+}
+
+func (x *AccountInformationResponse) GetCanWithdraw() bool {
+	if x != nil {
+		return x.CanWithdraw
+	}
+	return false
+}
+
+func (x *AccountInformationResponse) GetFeeTier() int64 {
+	if x != nil {
+		return x.FeeTier
+	}
+	return 0
+}
+
+func (x *AccountInformationResponse) GetUpdateTime() int64 {
+	if x != nil {
+		return x.UpdateTime
+	}
+	return 0
+}
+
+type GetPositionMarginChangeHistoryRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Symbol     string `protobuf:"bytes,1,opt,name=symbol,proto3" json:"symbol,omitempty"`
+	Type       int32  `protobuf:"varint,2,opt,name=type,proto3" json:"type,omitempty"`
+	StartTime  int64  `protobuf:"varint,3,opt,name=startTime,proto3" json:"startTime,omitempty"`
+	EndTime    int64  `protobuf:"varint,4,opt,name=endTime,proto3" json:"endTime,omitempty"`
+	Limit      int32  `protobuf:"varint,5,opt,name=limit,proto3" json:"limit,omitempty"`
+	RecvWindow int64  `protobuf:"varint,6,opt,name=recvWindow,proto3" json:"recvWindow,omitempty"`
+}
+
+func (x *GetPositionMarginChangeHistoryRequest) Reset() {
+	*x = GetPositionMarginChangeHistoryRequest{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_services_delivery_v1_user_data_msg_proto_msgTypes[15]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *GetPositionMarginChangeHistoryRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetPositionMarginChangeHistoryRequest) ProtoMessage() {}
+
+func (x *GetPositionMarginChangeHistoryRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_services_delivery_v1_user_data_msg_proto_msgTypes[15]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetPositionMarginChangeHistoryRequest.ProtoReflect.Descriptor instead.
+func (*GetPositionMarginChangeHistoryRequest) Descriptor() ([]byte, []int) {
+	return file_services_delivery_v1_user_data_msg_proto_rawDescGZIP(), []int{15}
+}
+
+func (x *GetPositionMarginChangeHistoryRequest) GetSymbol() string {
+	if x != nil {
+		return x.Symbol
+	}
+	return ""
+}
+
+func (x *GetPositionMarginChangeHistoryRequest) GetType() int32 {
+	if x != nil {
+		return x.Type
+	}
+	return 0
+}
+
+func (x *GetPositionMarginChangeHistoryRequest) GetStartTime() int64 {
+	if x != nil {
+		return x.StartTime
+	}
+	return 0
+}
+
+func (x *GetPositionMarginChangeHistoryRequest) GetEndTime() int64 {
+	if x != nil {
+		return x.EndTime
+	}
+	return 0
+}
+
+func (x *GetPositionMarginChangeHistoryRequest) GetLimit() int32 {
+	if x != nil {
+		return x.Limit
+	}
+	return 0
+}
+
+func (x *GetPositionMarginChangeHistoryRequest) GetRecvWindow() int64 {
+	if x != nil {
+		return x.RecvWindow
+	}
+	return 0
+}
+
+type GetPositionMarginChangeHistoryResponse struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	PositionMargins []*PositionMargin `protobuf:"bytes,1,rep,name=positionMargins,proto3" json:"positionMargins,omitempty"`
+}
+
+func (x *GetPositionMarginChangeHistoryResponse) Reset() {
+	*x = GetPositionMarginChangeHistoryResponse{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_services_delivery_v1_user_data_msg_proto_msgTypes[16]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *GetPositionMarginChangeHistoryResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetPositionMarginChangeHistoryResponse) ProtoMessage() {}
+
+func (x *GetPositionMarginChangeHistoryResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_services_delivery_v1_user_data_msg_proto_msgTypes[16]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetPositionMarginChangeHistoryResponse.ProtoReflect.Descriptor instead.
+func (*GetPositionMarginChangeHistoryResponse) Descriptor() ([]byte, []int) {
+	return file_services_delivery_v1_user_data_msg_proto_rawDescGZIP(), []int{16}
+}
+
+func (x *GetPositionMarginChangeHistoryResponse) GetPositionMargins() []*PositionMargin {
+	if x != nil {
+		return x.PositionMargins
+	}
+	return nil
+}
+
+type AccountTradeListRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Symbol     string `protobuf:"bytes,1,opt,name=symbol,proto3" json:"symbol,omitempty"`
+	Pair       string `protobuf:"bytes,2,opt,name=pair,proto3" json:"pair,omitempty"`
+	StartTime  int64  `protobuf:"varint,3,opt,name=startTime,proto3" json:"startTime,omitempty"`
+	EndTime    int64  `protobuf:"varint,4,opt,name=endTime,proto3" json:"endTime,omitempty"`
+	FromId     int64  `protobuf:"varint,5,opt,name=fromId,proto3" json:"fromId,omitempty"`
+	Limit      int32  `protobuf:"varint,6,opt,name=limit,proto3" json:"limit,omitempty"`
+	RecvWindow int64  `protobuf:"varint,7,opt,name=recvWindow,proto3" json:"recvWindow,omitempty"`
+}
+
+func (x *AccountTradeListRequest) Reset() {
+	*x = AccountTradeListRequest{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_services_delivery_v1_user_data_msg_proto_msgTypes[17]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *AccountTradeListRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*AccountTradeListRequest) ProtoMessage() {}
+
+func (x *AccountTradeListRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_services_delivery_v1_user_data_msg_proto_msgTypes[17]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use AccountTradeListRequest.ProtoReflect.Descriptor instead.
+func (*AccountTradeListRequest) Descriptor() ([]byte, []int) {
+	return file_services_delivery_v1_user_data_msg_proto_rawDescGZIP(), []int{17}
+}
+
+func (x *AccountTradeListRequest) GetSymbol() string {
+	if x != nil {
+		return x.Symbol
+	}
+	return ""
+}
+
+func (x *AccountTradeListRequest) GetPair() string {
+	if x != nil {
+		return x.Pair
+	}
+	return ""
+}
+
+func (x *AccountTradeListRequest) GetStartTime() int64 {
+	if x != nil {
+		return x.StartTime
+	}
+	return 0
+}
+
+func (x *AccountTradeListRequest) GetEndTime() int64 {
+	if x != nil {
+		return x.EndTime
+	}
+	return 0
+}
+
+func (x *AccountTradeListRequest) GetFromId() int64 {
+	if x != nil {
+		return x.FromId
+	}
+	return 0
+}
+
+func (x *AccountTradeListRequest) GetLimit() int32 {
+	if x != nil {
+		return x.Limit
+	}
+	return 0
+}
+
+func (x *AccountTradeListRequest) GetRecvWindow() int64 {
+	if x != nil {
+		return x.RecvWindow
+	}
+	return 0
+}
+
+type AccountTradeListResponse struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	AccountTrades []*AccountTrade `protobuf:"bytes,1,rep,name=accountTrades,proto3" json:"accountTrades,omitempty"`
+}
+
+func (x *AccountTradeListResponse) Reset() {
+	*x = AccountTradeListResponse{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_services_delivery_v1_user_data_msg_proto_msgTypes[18]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *AccountTradeListResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*AccountTradeListResponse) ProtoMessage() {}
+
+func (x *AccountTradeListResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_services_delivery_v1_user_data_msg_proto_msgTypes[18]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use AccountTradeListResponse.ProtoReflect.Descriptor instead.
+func (*AccountTradeListResponse) Descriptor() ([]byte, []int) {
+	return file_services_delivery_v1_user_data_msg_proto_rawDescGZIP(), []int{18}
+}
+
+func (x *AccountTradeListResponse) GetAccountTrades() []*AccountTrade {
+	if x != nil {
+		return x.AccountTrades
+	}
+	return nil
+}
+
+type GetIncomeHistoryRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Symbol     string     `protobuf:"bytes,1,opt,name=symbol,proto3" json:"symbol,omitempty"`
+	IncomeType IncomeType `protobuf:"varint,2,opt,name=incomeType,proto3,enum=services.delivery.v1.IncomeType" json:"incomeType,omitempty"`
+	StartTime  int64      `protobuf:"varint,3,opt,name=startTime,proto3" json:"startTime,omitempty"`
+	EndTime    int64      `protobuf:"varint,4,opt,name=endTime,proto3" json:"endTime,omitempty"`
+	Limit      int32      `protobuf:"varint,5,opt,name=limit,proto3" json:"limit,omitempty"`
+	RecvWindow int64      `protobuf:"varint,6,opt,name=recvWindow,proto3" json:"recvWindow,omitempty"`
+}
+
+func (x *GetIncomeHistoryRequest) Reset() {
+	*x = GetIncomeHistoryRequest{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_services_delivery_v1_user_data_msg_proto_msgTypes[19]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *GetIncomeHistoryRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetIncomeHistoryRequest) ProtoMessage() {}
+
+func (x *GetIncomeHistoryRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_services_delivery_v1_user_data_msg_proto_msgTypes[19]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetIncomeHistoryRequest.ProtoReflect.Descriptor instead.
+func (*GetIncomeHistoryRequest) Descriptor() ([]byte, []int) {
+	return file_services_delivery_v1_user_data_msg_proto_rawDescGZIP(), []int{19}
+}
+
+func (x *GetIncomeHistoryRequest) GetSymbol() string {
+	if x != nil {
+		return x.Symbol
+	}
+	return ""
+}
+
+func (x *GetIncomeHistoryRequest) GetIncomeType() IncomeType {
+	if x != nil {
+		return x.IncomeType
+	}
+	return IncomeType_INCOME_TYPE_UNSPECIFIED
+}
+
+func (x *GetIncomeHistoryRequest) GetStartTime() int64 {
+	if x != nil {
+		return x.StartTime
+	}
+	return 0
+}
+
+func (x *GetIncomeHistoryRequest) GetEndTime() int64 {
+	if x != nil {
+		return x.EndTime
+	}
+	return 0
+}
+
+func (x *GetIncomeHistoryRequest) GetLimit() int32 {
+	if x != nil {
+		return x.Limit
+	}
+	return 0
+}
+
+func (x *GetIncomeHistoryRequest) GetRecvWindow() int64 {
+	if x != nil {
+		return x.RecvWindow
+	}
+	return 0
+}
+
+type IncomeHistory struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Symbol     string     `protobuf:"bytes,1,opt,name=symbol,proto3" json:"symbol,omitempty"`
+	IncomeType IncomeType `protobuf:"varint,2,opt,name=incomeType,proto3,enum=services.delivery.v1.IncomeType" json:"incomeType,omitempty"`
+	Income     float64    `protobuf:"fixed64,3,opt,name=income,proto3" json:"income,omitempty"`
+	Asset      string     `protobuf:"bytes,4,opt,name=asset,proto3" json:"asset,omitempty"`
+	Info       string     `protobuf:"bytes,5,opt,name=info,proto3" json:"info,omitempty"`
+	Time       int64      `protobuf:"varint,6,opt,name=time,proto3" json:"time,omitempty"`
+	TranId     string     `protobuf:"bytes,7,opt,name=tranId,proto3" json:"tranId,omitempty"`
+	TradeId    string     `protobuf:"bytes,8,opt,name=tradeId,proto3" json:"tradeId,omitempty"`
+}
+
+func (x *IncomeHistory) Reset() {
+	*x = IncomeHistory{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_services_delivery_v1_user_data_msg_proto_msgTypes[20]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *IncomeHistory) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*IncomeHistory) ProtoMessage() {}
+
+func (x *IncomeHistory) ProtoReflect() protoreflect.Message {
+	mi := &file_services_delivery_v1_user_data_msg_proto_msgTypes[20]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use IncomeHistory.ProtoReflect.Descriptor instead.
+func (*IncomeHistory) Descriptor() ([]byte, []int) {
+	return file_services_delivery_v1_user_data_msg_proto_rawDescGZIP(), []int{20}
+}
+
+func (x *IncomeHistory) GetSymbol() string {
+	if x != nil {
+		return x.Symbol
+	}
+	return ""
+}
+
+func (x *IncomeHistory) GetIncomeType() IncomeType {
+	if x != nil {
+		return x.IncomeType
+	}
+	return IncomeType_INCOME_TYPE_UNSPECIFIED
+}
+
+func (x *IncomeHistory) GetIncome() float64 {
+	if x != nil {
+		return x.Income
+	}
+	return 0
+}
+
+func (x *IncomeHistory) GetAsset() string {
+	if x != nil {
+		return x.Asset
+	}
+	return ""
+}
+
+func (x *IncomeHistory) GetInfo() string {
+	if x != nil {
+		return x.Info
+	}
+	return ""
+}
+
+func (x *IncomeHistory) GetTime() int64 {
+	if x != nil {
+		return x.Time
+	}
+	return 0
+}
+
+func (x *IncomeHistory) GetTranId() string {
+	if x != nil {
+		return x.TranId
+	}
+	return ""
+}
+
+func (x *IncomeHistory) GetTradeId() string {
+	if x != nil {
+		return x.TradeId
+	}
+	return ""
+}
+
+type GetIncomeHistoryResponse struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Incomes []*IncomeHistory `protobuf:"bytes,1,rep,name=incomes,proto3" json:"incomes,omitempty"`
+}
+
+func (x *GetIncomeHistoryResponse) Reset() {
+	*x = GetIncomeHistoryResponse{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_services_delivery_v1_user_data_msg_proto_msgTypes[21]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *GetIncomeHistoryResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetIncomeHistoryResponse) ProtoMessage() {}
+
+func (x *GetIncomeHistoryResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_services_delivery_v1_user_data_msg_proto_msgTypes[21]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetIncomeHistoryResponse.ProtoReflect.Descriptor instead.
+func (*GetIncomeHistoryResponse) Descriptor() ([]byte, []int) {
+	return file_services_delivery_v1_user_data_msg_proto_rawDescGZIP(), []int{21}
+}
+
+func (x *GetIncomeHistoryResponse) GetIncomes() []*IncomeHistory {
+	if x != nil {
+		return x.Incomes
+	}
+	return nil
+}
+
+type NotionalBracketForSymbolRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Pair       string `protobuf:"bytes,1,opt,name=pair,proto3" json:"pair,omitempty"`
+	RecvWindow int64  `protobuf:"varint,2,opt,name=recvWindow,proto3" json:"recvWindow,omitempty"`
+}
+
+func (x *NotionalBracketForSymbolRequest) Reset() {
+	*x = NotionalBracketForSymbolRequest{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_services_delivery_v1_user_data_msg_proto_msgTypes[22]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *NotionalBracketForSymbolRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*NotionalBracketForSymbolRequest) ProtoMessage() {}
+
+func (x *NotionalBracketForSymbolRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_services_delivery_v1_user_data_msg_proto_msgTypes[22]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use NotionalBracketForSymbolRequest.ProtoReflect.Descriptor instead.
+func (*NotionalBracketForSymbolRequest) Descriptor() ([]byte, []int) {
+	return file_services_delivery_v1_user_data_msg_proto_rawDescGZIP(), []int{22}
+}
+
+func (x *NotionalBracketForSymbolRequest) GetPair() string {
+	if x != nil {
+		return x.Pair
+	}
+	return ""
+}
+
+func (x *NotionalBracketForSymbolRequest) GetRecvWindow() int64 {
+	if x != nil {
+		return x.RecvWindow
+	}
+	return 0
+}
+
+type Bracket struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Bracket          int32   `protobuf:"varint,1,opt,name=bracket,proto3" json:"bracket,omitempty"`
+	InitialLeverage  int32   `protobuf:"varint,2,opt,name=initialLeverage,proto3" json:"initialLeverage,omitempty"`
+	QtyCap           float64 `protobuf:"fixed64,3,opt,name=qtyCap,proto3" json:"qtyCap,omitempty"`
+	QtylFloor        float64 `protobuf:"fixed64,4,opt,name=qtylFloor,proto3" json:"qtylFloor,omitempty"`
+	MaintMarginRatio float64 `protobuf:"fixed64,5,opt,name=maintMarginRatio,proto3" json:"maintMarginRatio,omitempty"`
+	Cum              float64 `protobuf:"fixed64,6,opt,name=cum,proto3" json:"cum,omitempty"`
+}
+
+func (x *Bracket) Reset() {
+	*x = Bracket{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_services_delivery_v1_user_data_msg_proto_msgTypes[23]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *Bracket) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Bracket) ProtoMessage() {}
+
+func (x *Bracket) ProtoReflect() protoreflect.Message {
+	mi := &file_services_delivery_v1_user_data_msg_proto_msgTypes[23]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Bracket.ProtoReflect.Descriptor instead.
+func (*Bracket) Descriptor() ([]byte, []int) {
+	return file_services_delivery_v1_user_data_msg_proto_rawDescGZIP(), []int{23}
+}
+
+func (x *Bracket) GetBracket() int32 {
+	if x != nil {
+		return x.Bracket
+	}
+	return 0
+}
+
+func (x *Bracket) GetInitialLeverage() int32 {
+	if x != nil {
+		return x.InitialLeverage
+	}
+	return 0
+}
+
+func (x *Bracket) GetQtyCap() float64 {
+	if x != nil {
+		return x.QtyCap
+	}
+	return 0
+}
+
+func (x *Bracket) GetQtylFloor() float64 {
+	if x != nil {
+		return x.QtylFloor
+	}
+	return 0
+}
+
+func (x *Bracket) GetMaintMarginRatio() float64 {
+	if x != nil {
+		return x.MaintMarginRatio
+	}
+	return 0
+}
+
+func (x *Bracket) GetCum() float64 {
+	if x != nil {
+		return x.Cum
+	}
+	return 0
+}
+
+type NotionalBracketForSymbol struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Pair     string     `protobuf:"bytes,1,opt,name=pair,proto3" json:"pair,omitempty"`
+	Brackets []*Bracket `protobuf:"bytes,2,rep,name=brackets,proto3" json:"brackets,omitempty"`
+}
+
+func (x *NotionalBracketForSymbol) Reset() {
+	*x = NotionalBracketForSymbol{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_services_delivery_v1_user_data_msg_proto_msgTypes[24]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *NotionalBracketForSymbol) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*NotionalBracketForSymbol) ProtoMessage() {}
+
+func (x *NotionalBracketForSymbol) ProtoReflect() protoreflect.Message {
+	mi := &file_services_delivery_v1_user_data_msg_proto_msgTypes[24]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use NotionalBracketForSymbol.ProtoReflect.Descriptor instead.
+func (*NotionalBracketForSymbol) Descriptor() ([]byte, []int) {
+	return file_services_delivery_v1_user_data_msg_proto_rawDescGZIP(), []int{24}
+}
+
+func (x *NotionalBracketForSymbol) GetPair() string {
+	if x != nil {
+		return x.Pair
+	}
+	return ""
+}
+
+func (x *NotionalBracketForSymbol) GetBrackets() []*Bracket {
+	if x != nil {
+		return x.Brackets
+	}
+	return nil
+}
+
+type NotionalBracketForSymbolResponse struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Brackets []*NotionalBracketForSymbol `protobuf:"bytes,1,rep,name=brackets,proto3" json:"brackets,omitempty"`
+}
+
+func (x *NotionalBracketForSymbolResponse) Reset() {
+	*x = NotionalBracketForSymbolResponse{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_services_delivery_v1_user_data_msg_proto_msgTypes[25]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *NotionalBracketForSymbolResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*NotionalBracketForSymbolResponse) ProtoMessage() {}
+
+func (x *NotionalBracketForSymbolResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_services_delivery_v1_user_data_msg_proto_msgTypes[25]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use NotionalBracketForSymbolResponse.ProtoReflect.Descriptor instead.
+func (*NotionalBracketForSymbolResponse) Descriptor() ([]byte, []int) {
+	return file_services_delivery_v1_user_data_msg_proto_rawDescGZIP(), []int{25}
+}
+
+func (x *NotionalBracketForSymbolResponse) GetBrackets() []*NotionalBracketForSymbol {
+	if x != nil {
+		return x.Brackets
+	}
+	return nil
+}
+
+type NotionalBracketForPairRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Symbol     string `protobuf:"bytes,1,opt,name=symbol,proto3" json:"symbol,omitempty"`
+	RecvWindow int64  `protobuf:"varint,2,opt,name=recvWindow,proto3" json:"recvWindow,omitempty"`
+}
+
+func (x *NotionalBracketForPairRequest) Reset() {
+	*x = NotionalBracketForPairRequest{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_services_delivery_v1_user_data_msg_proto_msgTypes[26]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *NotionalBracketForPairRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*NotionalBracketForPairRequest) ProtoMessage() {}
+
+func (x *NotionalBracketForPairRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_services_delivery_v1_user_data_msg_proto_msgTypes[26]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use NotionalBracketForPairRequest.ProtoReflect.Descriptor instead.
+func (*NotionalBracketForPairRequest) Descriptor() ([]byte, []int) {
+	return file_services_delivery_v1_user_data_msg_proto_rawDescGZIP(), []int{26}
+}
+
+func (x *NotionalBracketForPairRequest) GetSymbol() string {
+	if x != nil {
+		return x.Symbol
+	}
+	return ""
+}
+
+func (x *NotionalBracketForPairRequest) GetRecvWindow() int64 {
+	if x != nil {
+		return x.RecvWindow
+	}
+	return 0
+}
+
+type NotionalBracketForPair struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Symbol   string     `protobuf:"bytes,1,opt,name=symbol,proto3" json:"symbol,omitempty"`
+	Brackets []*Bracket `protobuf:"bytes,2,rep,name=brackets,proto3" json:"brackets,omitempty"`
+}
+
+func (x *NotionalBracketForPair) Reset() {
+	*x = NotionalBracketForPair{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_services_delivery_v1_user_data_msg_proto_msgTypes[27]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *NotionalBracketForPair) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*NotionalBracketForPair) ProtoMessage() {}
+
+func (x *NotionalBracketForPair) ProtoReflect() protoreflect.Message {
+	mi := &file_services_delivery_v1_user_data_msg_proto_msgTypes[27]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use NotionalBracketForPair.ProtoReflect.Descriptor instead.
+func (*NotionalBracketForPair) Descriptor() ([]byte, []int) {
+	return file_services_delivery_v1_user_data_msg_proto_rawDescGZIP(), []int{27}
+}
+
+func (x *NotionalBracketForPair) GetSymbol() string {
+	if x != nil {
+		return x.Symbol
+	}
+	return ""
+}
+
+func (x *NotionalBracketForPair) GetBrackets() []*Bracket {
+	if x != nil {
+		return x.Brackets
+	}
+	return nil
+}
+
+type NotionalBracketForPairResponse struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Brackets []*NotionalBracketForPair `protobuf:"bytes,1,rep,name=brackets,proto3" json:"brackets,omitempty"`
+}
+
+func (x *NotionalBracketForPairResponse) Reset() {
+	*x = NotionalBracketForPairResponse{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_services_delivery_v1_user_data_msg_proto_msgTypes[28]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *NotionalBracketForPairResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*NotionalBracketForPairResponse) ProtoMessage() {}
+
+func (x *NotionalBracketForPairResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_services_delivery_v1_user_data_msg_proto_msgTypes[28]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use NotionalBracketForPairResponse.ProtoReflect.Descriptor instead.
+func (*NotionalBracketForPairResponse) Descriptor() ([]byte, []int) {
+	return file_services_delivery_v1_user_data_msg_proto_rawDescGZIP(), []int{28}
+}
+
+func (x *NotionalBracketForPairResponse) GetBrackets() []*NotionalBracketForPair {
+	if x != nil {
+		return x.Brackets
+	}
+	return nil
+}
+
 var File_services_delivery_v1_user_data_msg_proto protoreflect.FileDescriptor
 
 var file_services_delivery_v1_user_data_msg_proto_rawDesc = []byte{
@@ -1455,12 +2464,155 @@ var file_services_delivery_v1_user_data_msg_proto_rawDesc = []byte{
 	0x69, 0x74, 0x69, 0x6f, 0x6e, 0x73, 0x18, 0x01, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x1e, 0x2e, 0x73,
 	0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x73, 0x2e, 0x64, 0x65, 0x6c, 0x69, 0x76, 0x65, 0x72, 0x79,
 	0x2e, 0x76, 0x31, 0x2e, 0x50, 0x6f, 0x73, 0x69, 0x74, 0x69, 0x6f, 0x6e, 0x52, 0x09, 0x70, 0x6f,
-	0x73, 0x69, 0x74, 0x69, 0x6f, 0x6e, 0x73, 0x42, 0x40, 0x5a, 0x3e, 0x67, 0x69, 0x74, 0x68, 0x75,
-	0x62, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x68, 0x39, 0x38, 0x39, 0x36, 0x2f, 0x62, 0x69, 0x6e, 0x67,
-	0x6f, 0x2d, 0x70, 0x6b, 0x67, 0x2d, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2f, 0x70, 0x72, 0x6f, 0x74,
-	0x6f, 0x2f, 0x73, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x73, 0x2f, 0x64, 0x65, 0x6c, 0x69, 0x76,
-	0x65, 0x72, 0x79, 0x2f, 0x76, 0x31, 0x3b, 0x76, 0x31, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f,
-	0x33,
+	0x73, 0x69, 0x74, 0x69, 0x6f, 0x6e, 0x73, 0x22, 0xa7, 0x02, 0x0a, 0x1a, 0x41, 0x63, 0x63, 0x6f,
+	0x75, 0x6e, 0x74, 0x49, 0x6e, 0x66, 0x6f, 0x72, 0x6d, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x52, 0x65,
+	0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x33, 0x0a, 0x06, 0x61, 0x73, 0x73, 0x65, 0x74, 0x73,
+	0x18, 0x01, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x1b, 0x2e, 0x73, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65,
+	0x73, 0x2e, 0x64, 0x65, 0x6c, 0x69, 0x76, 0x65, 0x72, 0x79, 0x2e, 0x76, 0x31, 0x2e, 0x41, 0x73,
+	0x73, 0x65, 0x74, 0x52, 0x06, 0x61, 0x73, 0x73, 0x65, 0x74, 0x73, 0x12, 0x3c, 0x0a, 0x09, 0x70,
+	0x6f, 0x73, 0x69, 0x74, 0x69, 0x6f, 0x6e, 0x73, 0x18, 0x02, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x1e,
+	0x2e, 0x73, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x73, 0x2e, 0x64, 0x65, 0x6c, 0x69, 0x76, 0x65,
+	0x72, 0x79, 0x2e, 0x76, 0x31, 0x2e, 0x50, 0x6f, 0x73, 0x69, 0x74, 0x69, 0x6f, 0x6e, 0x52, 0x09,
+	0x70, 0x6f, 0x73, 0x69, 0x74, 0x69, 0x6f, 0x6e, 0x73, 0x12, 0x1e, 0x0a, 0x0a, 0x63, 0x61, 0x6e,
+	0x44, 0x65, 0x70, 0x6f, 0x73, 0x69, 0x74, 0x18, 0x03, 0x20, 0x01, 0x28, 0x08, 0x52, 0x0a, 0x63,
+	0x61, 0x6e, 0x44, 0x65, 0x70, 0x6f, 0x73, 0x69, 0x74, 0x12, 0x1a, 0x0a, 0x08, 0x63, 0x61, 0x6e,
+	0x54, 0x72, 0x61, 0x64, 0x65, 0x18, 0x04, 0x20, 0x01, 0x28, 0x08, 0x52, 0x08, 0x63, 0x61, 0x6e,
+	0x54, 0x72, 0x61, 0x64, 0x65, 0x12, 0x20, 0x0a, 0x0b, 0x63, 0x61, 0x6e, 0x57, 0x69, 0x74, 0x68,
+	0x64, 0x72, 0x61, 0x77, 0x18, 0x05, 0x20, 0x01, 0x28, 0x08, 0x52, 0x0b, 0x63, 0x61, 0x6e, 0x57,
+	0x69, 0x74, 0x68, 0x64, 0x72, 0x61, 0x77, 0x12, 0x18, 0x0a, 0x07, 0x66, 0x65, 0x65, 0x54, 0x69,
+	0x65, 0x72, 0x18, 0x06, 0x20, 0x01, 0x28, 0x03, 0x52, 0x07, 0x66, 0x65, 0x65, 0x54, 0x69, 0x65,
+	0x72, 0x12, 0x1e, 0x0a, 0x0a, 0x75, 0x70, 0x64, 0x61, 0x74, 0x65, 0x54, 0x69, 0x6d, 0x65, 0x18,
+	0x07, 0x20, 0x01, 0x28, 0x03, 0x52, 0x0a, 0x75, 0x70, 0x64, 0x61, 0x74, 0x65, 0x54, 0x69, 0x6d,
+	0x65, 0x22, 0xc1, 0x01, 0x0a, 0x25, 0x47, 0x65, 0x74, 0x50, 0x6f, 0x73, 0x69, 0x74, 0x69, 0x6f,
+	0x6e, 0x4d, 0x61, 0x72, 0x67, 0x69, 0x6e, 0x43, 0x68, 0x61, 0x6e, 0x67, 0x65, 0x48, 0x69, 0x73,
+	0x74, 0x6f, 0x72, 0x79, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x16, 0x0a, 0x06, 0x73,
+	0x79, 0x6d, 0x62, 0x6f, 0x6c, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x06, 0x73, 0x79, 0x6d,
+	0x62, 0x6f, 0x6c, 0x12, 0x12, 0x0a, 0x04, 0x74, 0x79, 0x70, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28,
+	0x05, 0x52, 0x04, 0x74, 0x79, 0x70, 0x65, 0x12, 0x1c, 0x0a, 0x09, 0x73, 0x74, 0x61, 0x72, 0x74,
+	0x54, 0x69, 0x6d, 0x65, 0x18, 0x03, 0x20, 0x01, 0x28, 0x03, 0x52, 0x09, 0x73, 0x74, 0x61, 0x72,
+	0x74, 0x54, 0x69, 0x6d, 0x65, 0x12, 0x18, 0x0a, 0x07, 0x65, 0x6e, 0x64, 0x54, 0x69, 0x6d, 0x65,
+	0x18, 0x04, 0x20, 0x01, 0x28, 0x03, 0x52, 0x07, 0x65, 0x6e, 0x64, 0x54, 0x69, 0x6d, 0x65, 0x12,
+	0x14, 0x0a, 0x05, 0x6c, 0x69, 0x6d, 0x69, 0x74, 0x18, 0x05, 0x20, 0x01, 0x28, 0x05, 0x52, 0x05,
+	0x6c, 0x69, 0x6d, 0x69, 0x74, 0x12, 0x1e, 0x0a, 0x0a, 0x72, 0x65, 0x63, 0x76, 0x57, 0x69, 0x6e,
+	0x64, 0x6f, 0x77, 0x18, 0x06, 0x20, 0x01, 0x28, 0x03, 0x52, 0x0a, 0x72, 0x65, 0x63, 0x76, 0x57,
+	0x69, 0x6e, 0x64, 0x6f, 0x77, 0x22, 0x78, 0x0a, 0x26, 0x47, 0x65, 0x74, 0x50, 0x6f, 0x73, 0x69,
+	0x74, 0x69, 0x6f, 0x6e, 0x4d, 0x61, 0x72, 0x67, 0x69, 0x6e, 0x43, 0x68, 0x61, 0x6e, 0x67, 0x65,
+	0x48, 0x69, 0x73, 0x74, 0x6f, 0x72, 0x79, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12,
+	0x4e, 0x0a, 0x0f, 0x70, 0x6f, 0x73, 0x69, 0x74, 0x69, 0x6f, 0x6e, 0x4d, 0x61, 0x72, 0x67, 0x69,
+	0x6e, 0x73, 0x18, 0x01, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x24, 0x2e, 0x73, 0x65, 0x72, 0x76, 0x69,
+	0x63, 0x65, 0x73, 0x2e, 0x64, 0x65, 0x6c, 0x69, 0x76, 0x65, 0x72, 0x79, 0x2e, 0x76, 0x31, 0x2e,
+	0x50, 0x6f, 0x73, 0x69, 0x74, 0x69, 0x6f, 0x6e, 0x4d, 0x61, 0x72, 0x67, 0x69, 0x6e, 0x52, 0x0f,
+	0x70, 0x6f, 0x73, 0x69, 0x74, 0x69, 0x6f, 0x6e, 0x4d, 0x61, 0x72, 0x67, 0x69, 0x6e, 0x73, 0x22,
+	0xcb, 0x01, 0x0a, 0x17, 0x41, 0x63, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x54, 0x72, 0x61, 0x64, 0x65,
+	0x4c, 0x69, 0x73, 0x74, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x16, 0x0a, 0x06, 0x73,
+	0x79, 0x6d, 0x62, 0x6f, 0x6c, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x06, 0x73, 0x79, 0x6d,
+	0x62, 0x6f, 0x6c, 0x12, 0x12, 0x0a, 0x04, 0x70, 0x61, 0x69, 0x72, 0x18, 0x02, 0x20, 0x01, 0x28,
+	0x09, 0x52, 0x04, 0x70, 0x61, 0x69, 0x72, 0x12, 0x1c, 0x0a, 0x09, 0x73, 0x74, 0x61, 0x72, 0x74,
+	0x54, 0x69, 0x6d, 0x65, 0x18, 0x03, 0x20, 0x01, 0x28, 0x03, 0x52, 0x09, 0x73, 0x74, 0x61, 0x72,
+	0x74, 0x54, 0x69, 0x6d, 0x65, 0x12, 0x18, 0x0a, 0x07, 0x65, 0x6e, 0x64, 0x54, 0x69, 0x6d, 0x65,
+	0x18, 0x04, 0x20, 0x01, 0x28, 0x03, 0x52, 0x07, 0x65, 0x6e, 0x64, 0x54, 0x69, 0x6d, 0x65, 0x12,
+	0x16, 0x0a, 0x06, 0x66, 0x72, 0x6f, 0x6d, 0x49, 0x64, 0x18, 0x05, 0x20, 0x01, 0x28, 0x03, 0x52,
+	0x06, 0x66, 0x72, 0x6f, 0x6d, 0x49, 0x64, 0x12, 0x14, 0x0a, 0x05, 0x6c, 0x69, 0x6d, 0x69, 0x74,
+	0x18, 0x06, 0x20, 0x01, 0x28, 0x05, 0x52, 0x05, 0x6c, 0x69, 0x6d, 0x69, 0x74, 0x12, 0x1e, 0x0a,
+	0x0a, 0x72, 0x65, 0x63, 0x76, 0x57, 0x69, 0x6e, 0x64, 0x6f, 0x77, 0x18, 0x07, 0x20, 0x01, 0x28,
+	0x03, 0x52, 0x0a, 0x72, 0x65, 0x63, 0x76, 0x57, 0x69, 0x6e, 0x64, 0x6f, 0x77, 0x22, 0x64, 0x0a,
+	0x18, 0x41, 0x63, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x54, 0x72, 0x61, 0x64, 0x65, 0x4c, 0x69, 0x73,
+	0x74, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x48, 0x0a, 0x0d, 0x61, 0x63, 0x63,
+	0x6f, 0x75, 0x6e, 0x74, 0x54, 0x72, 0x61, 0x64, 0x65, 0x73, 0x18, 0x01, 0x20, 0x03, 0x28, 0x0b,
+	0x32, 0x22, 0x2e, 0x73, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x73, 0x2e, 0x64, 0x65, 0x6c, 0x69,
+	0x76, 0x65, 0x72, 0x79, 0x2e, 0x76, 0x31, 0x2e, 0x41, 0x63, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x54,
+	0x72, 0x61, 0x64, 0x65, 0x52, 0x0d, 0x61, 0x63, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x54, 0x72, 0x61,
+	0x64, 0x65, 0x73, 0x22, 0xe1, 0x01, 0x0a, 0x17, 0x47, 0x65, 0x74, 0x49, 0x6e, 0x63, 0x6f, 0x6d,
+	0x65, 0x48, 0x69, 0x73, 0x74, 0x6f, 0x72, 0x79, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12,
+	0x16, 0x0a, 0x06, 0x73, 0x79, 0x6d, 0x62, 0x6f, 0x6c, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52,
+	0x06, 0x73, 0x79, 0x6d, 0x62, 0x6f, 0x6c, 0x12, 0x40, 0x0a, 0x0a, 0x69, 0x6e, 0x63, 0x6f, 0x6d,
+	0x65, 0x54, 0x79, 0x70, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x0e, 0x32, 0x20, 0x2e, 0x73, 0x65,
+	0x72, 0x76, 0x69, 0x63, 0x65, 0x73, 0x2e, 0x64, 0x65, 0x6c, 0x69, 0x76, 0x65, 0x72, 0x79, 0x2e,
+	0x76, 0x31, 0x2e, 0x49, 0x6e, 0x63, 0x6f, 0x6d, 0x65, 0x54, 0x79, 0x70, 0x65, 0x52, 0x0a, 0x69,
+	0x6e, 0x63, 0x6f, 0x6d, 0x65, 0x54, 0x79, 0x70, 0x65, 0x12, 0x1c, 0x0a, 0x09, 0x73, 0x74, 0x61,
+	0x72, 0x74, 0x54, 0x69, 0x6d, 0x65, 0x18, 0x03, 0x20, 0x01, 0x28, 0x03, 0x52, 0x09, 0x73, 0x74,
+	0x61, 0x72, 0x74, 0x54, 0x69, 0x6d, 0x65, 0x12, 0x18, 0x0a, 0x07, 0x65, 0x6e, 0x64, 0x54, 0x69,
+	0x6d, 0x65, 0x18, 0x04, 0x20, 0x01, 0x28, 0x03, 0x52, 0x07, 0x65, 0x6e, 0x64, 0x54, 0x69, 0x6d,
+	0x65, 0x12, 0x14, 0x0a, 0x05, 0x6c, 0x69, 0x6d, 0x69, 0x74, 0x18, 0x05, 0x20, 0x01, 0x28, 0x05,
+	0x52, 0x05, 0x6c, 0x69, 0x6d, 0x69, 0x74, 0x12, 0x1e, 0x0a, 0x0a, 0x72, 0x65, 0x63, 0x76, 0x57,
+	0x69, 0x6e, 0x64, 0x6f, 0x77, 0x18, 0x06, 0x20, 0x01, 0x28, 0x03, 0x52, 0x0a, 0x72, 0x65, 0x63,
+	0x76, 0x57, 0x69, 0x6e, 0x64, 0x6f, 0x77, 0x22, 0xf1, 0x01, 0x0a, 0x0d, 0x49, 0x6e, 0x63, 0x6f,
+	0x6d, 0x65, 0x48, 0x69, 0x73, 0x74, 0x6f, 0x72, 0x79, 0x12, 0x16, 0x0a, 0x06, 0x73, 0x79, 0x6d,
+	0x62, 0x6f, 0x6c, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x06, 0x73, 0x79, 0x6d, 0x62, 0x6f,
+	0x6c, 0x12, 0x40, 0x0a, 0x0a, 0x69, 0x6e, 0x63, 0x6f, 0x6d, 0x65, 0x54, 0x79, 0x70, 0x65, 0x18,
+	0x02, 0x20, 0x01, 0x28, 0x0e, 0x32, 0x20, 0x2e, 0x73, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x73,
+	0x2e, 0x64, 0x65, 0x6c, 0x69, 0x76, 0x65, 0x72, 0x79, 0x2e, 0x76, 0x31, 0x2e, 0x49, 0x6e, 0x63,
+	0x6f, 0x6d, 0x65, 0x54, 0x79, 0x70, 0x65, 0x52, 0x0a, 0x69, 0x6e, 0x63, 0x6f, 0x6d, 0x65, 0x54,
+	0x79, 0x70, 0x65, 0x12, 0x16, 0x0a, 0x06, 0x69, 0x6e, 0x63, 0x6f, 0x6d, 0x65, 0x18, 0x03, 0x20,
+	0x01, 0x28, 0x01, 0x52, 0x06, 0x69, 0x6e, 0x63, 0x6f, 0x6d, 0x65, 0x12, 0x14, 0x0a, 0x05, 0x61,
+	0x73, 0x73, 0x65, 0x74, 0x18, 0x04, 0x20, 0x01, 0x28, 0x09, 0x52, 0x05, 0x61, 0x73, 0x73, 0x65,
+	0x74, 0x12, 0x12, 0x0a, 0x04, 0x69, 0x6e, 0x66, 0x6f, 0x18, 0x05, 0x20, 0x01, 0x28, 0x09, 0x52,
+	0x04, 0x69, 0x6e, 0x66, 0x6f, 0x12, 0x12, 0x0a, 0x04, 0x74, 0x69, 0x6d, 0x65, 0x18, 0x06, 0x20,
+	0x01, 0x28, 0x03, 0x52, 0x04, 0x74, 0x69, 0x6d, 0x65, 0x12, 0x16, 0x0a, 0x06, 0x74, 0x72, 0x61,
+	0x6e, 0x49, 0x64, 0x18, 0x07, 0x20, 0x01, 0x28, 0x09, 0x52, 0x06, 0x74, 0x72, 0x61, 0x6e, 0x49,
+	0x64, 0x12, 0x18, 0x0a, 0x07, 0x74, 0x72, 0x61, 0x64, 0x65, 0x49, 0x64, 0x18, 0x08, 0x20, 0x01,
+	0x28, 0x09, 0x52, 0x07, 0x74, 0x72, 0x61, 0x64, 0x65, 0x49, 0x64, 0x22, 0x59, 0x0a, 0x18, 0x47,
+	0x65, 0x74, 0x49, 0x6e, 0x63, 0x6f, 0x6d, 0x65, 0x48, 0x69, 0x73, 0x74, 0x6f, 0x72, 0x79, 0x52,
+	0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x3d, 0x0a, 0x07, 0x69, 0x6e, 0x63, 0x6f, 0x6d,
+	0x65, 0x73, 0x18, 0x01, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x23, 0x2e, 0x73, 0x65, 0x72, 0x76, 0x69,
+	0x63, 0x65, 0x73, 0x2e, 0x64, 0x65, 0x6c, 0x69, 0x76, 0x65, 0x72, 0x79, 0x2e, 0x76, 0x31, 0x2e,
+	0x49, 0x6e, 0x63, 0x6f, 0x6d, 0x65, 0x48, 0x69, 0x73, 0x74, 0x6f, 0x72, 0x79, 0x52, 0x07, 0x69,
+	0x6e, 0x63, 0x6f, 0x6d, 0x65, 0x73, 0x22, 0x55, 0x0a, 0x1f, 0x4e, 0x6f, 0x74, 0x69, 0x6f, 0x6e,
+	0x61, 0x6c, 0x42, 0x72, 0x61, 0x63, 0x6b, 0x65, 0x74, 0x46, 0x6f, 0x72, 0x53, 0x79, 0x6d, 0x62,
+	0x6f, 0x6c, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x12, 0x0a, 0x04, 0x70, 0x61, 0x69,
+	0x72, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x70, 0x61, 0x69, 0x72, 0x12, 0x1e, 0x0a,
+	0x0a, 0x72, 0x65, 0x63, 0x76, 0x57, 0x69, 0x6e, 0x64, 0x6f, 0x77, 0x18, 0x02, 0x20, 0x01, 0x28,
+	0x03, 0x52, 0x0a, 0x72, 0x65, 0x63, 0x76, 0x57, 0x69, 0x6e, 0x64, 0x6f, 0x77, 0x22, 0xc1, 0x01,
+	0x0a, 0x07, 0x42, 0x72, 0x61, 0x63, 0x6b, 0x65, 0x74, 0x12, 0x18, 0x0a, 0x07, 0x62, 0x72, 0x61,
+	0x63, 0x6b, 0x65, 0x74, 0x18, 0x01, 0x20, 0x01, 0x28, 0x05, 0x52, 0x07, 0x62, 0x72, 0x61, 0x63,
+	0x6b, 0x65, 0x74, 0x12, 0x28, 0x0a, 0x0f, 0x69, 0x6e, 0x69, 0x74, 0x69, 0x61, 0x6c, 0x4c, 0x65,
+	0x76, 0x65, 0x72, 0x61, 0x67, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x05, 0x52, 0x0f, 0x69, 0x6e,
+	0x69, 0x74, 0x69, 0x61, 0x6c, 0x4c, 0x65, 0x76, 0x65, 0x72, 0x61, 0x67, 0x65, 0x12, 0x16, 0x0a,
+	0x06, 0x71, 0x74, 0x79, 0x43, 0x61, 0x70, 0x18, 0x03, 0x20, 0x01, 0x28, 0x01, 0x52, 0x06, 0x71,
+	0x74, 0x79, 0x43, 0x61, 0x70, 0x12, 0x1c, 0x0a, 0x09, 0x71, 0x74, 0x79, 0x6c, 0x46, 0x6c, 0x6f,
+	0x6f, 0x72, 0x18, 0x04, 0x20, 0x01, 0x28, 0x01, 0x52, 0x09, 0x71, 0x74, 0x79, 0x6c, 0x46, 0x6c,
+	0x6f, 0x6f, 0x72, 0x12, 0x2a, 0x0a, 0x10, 0x6d, 0x61, 0x69, 0x6e, 0x74, 0x4d, 0x61, 0x72, 0x67,
+	0x69, 0x6e, 0x52, 0x61, 0x74, 0x69, 0x6f, 0x18, 0x05, 0x20, 0x01, 0x28, 0x01, 0x52, 0x10, 0x6d,
+	0x61, 0x69, 0x6e, 0x74, 0x4d, 0x61, 0x72, 0x67, 0x69, 0x6e, 0x52, 0x61, 0x74, 0x69, 0x6f, 0x12,
+	0x10, 0x0a, 0x03, 0x63, 0x75, 0x6d, 0x18, 0x06, 0x20, 0x01, 0x28, 0x01, 0x52, 0x03, 0x63, 0x75,
+	0x6d, 0x22, 0x69, 0x0a, 0x18, 0x4e, 0x6f, 0x74, 0x69, 0x6f, 0x6e, 0x61, 0x6c, 0x42, 0x72, 0x61,
+	0x63, 0x6b, 0x65, 0x74, 0x46, 0x6f, 0x72, 0x53, 0x79, 0x6d, 0x62, 0x6f, 0x6c, 0x12, 0x12, 0x0a,
+	0x04, 0x70, 0x61, 0x69, 0x72, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x70, 0x61, 0x69,
+	0x72, 0x12, 0x39, 0x0a, 0x08, 0x62, 0x72, 0x61, 0x63, 0x6b, 0x65, 0x74, 0x73, 0x18, 0x02, 0x20,
+	0x03, 0x28, 0x0b, 0x32, 0x1d, 0x2e, 0x73, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x73, 0x2e, 0x64,
+	0x65, 0x6c, 0x69, 0x76, 0x65, 0x72, 0x79, 0x2e, 0x76, 0x31, 0x2e, 0x42, 0x72, 0x61, 0x63, 0x6b,
+	0x65, 0x74, 0x52, 0x08, 0x62, 0x72, 0x61, 0x63, 0x6b, 0x65, 0x74, 0x73, 0x22, 0x6e, 0x0a, 0x20,
+	0x4e, 0x6f, 0x74, 0x69, 0x6f, 0x6e, 0x61, 0x6c, 0x42, 0x72, 0x61, 0x63, 0x6b, 0x65, 0x74, 0x46,
+	0x6f, 0x72, 0x53, 0x79, 0x6d, 0x62, 0x6f, 0x6c, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65,
+	0x12, 0x4a, 0x0a, 0x08, 0x62, 0x72, 0x61, 0x63, 0x6b, 0x65, 0x74, 0x73, 0x18, 0x01, 0x20, 0x03,
+	0x28, 0x0b, 0x32, 0x2e, 0x2e, 0x73, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x73, 0x2e, 0x64, 0x65,
+	0x6c, 0x69, 0x76, 0x65, 0x72, 0x79, 0x2e, 0x76, 0x31, 0x2e, 0x4e, 0x6f, 0x74, 0x69, 0x6f, 0x6e,
+	0x61, 0x6c, 0x42, 0x72, 0x61, 0x63, 0x6b, 0x65, 0x74, 0x46, 0x6f, 0x72, 0x53, 0x79, 0x6d, 0x62,
+	0x6f, 0x6c, 0x52, 0x08, 0x62, 0x72, 0x61, 0x63, 0x6b, 0x65, 0x74, 0x73, 0x22, 0x57, 0x0a, 0x1d,
+	0x4e, 0x6f, 0x74, 0x69, 0x6f, 0x6e, 0x61, 0x6c, 0x42, 0x72, 0x61, 0x63, 0x6b, 0x65, 0x74, 0x46,
+	0x6f, 0x72, 0x50, 0x61, 0x69, 0x72, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x16, 0x0a,
+	0x06, 0x73, 0x79, 0x6d, 0x62, 0x6f, 0x6c, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x06, 0x73,
+	0x79, 0x6d, 0x62, 0x6f, 0x6c, 0x12, 0x1e, 0x0a, 0x0a, 0x72, 0x65, 0x63, 0x76, 0x57, 0x69, 0x6e,
+	0x64, 0x6f, 0x77, 0x18, 0x02, 0x20, 0x01, 0x28, 0x03, 0x52, 0x0a, 0x72, 0x65, 0x63, 0x76, 0x57,
+	0x69, 0x6e, 0x64, 0x6f, 0x77, 0x22, 0x6b, 0x0a, 0x16, 0x4e, 0x6f, 0x74, 0x69, 0x6f, 0x6e, 0x61,
+	0x6c, 0x42, 0x72, 0x61, 0x63, 0x6b, 0x65, 0x74, 0x46, 0x6f, 0x72, 0x50, 0x61, 0x69, 0x72, 0x12,
+	0x16, 0x0a, 0x06, 0x73, 0x79, 0x6d, 0x62, 0x6f, 0x6c, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52,
+	0x06, 0x73, 0x79, 0x6d, 0x62, 0x6f, 0x6c, 0x12, 0x39, 0x0a, 0x08, 0x62, 0x72, 0x61, 0x63, 0x6b,
+	0x65, 0x74, 0x73, 0x18, 0x02, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x1d, 0x2e, 0x73, 0x65, 0x72, 0x76,
+	0x69, 0x63, 0x65, 0x73, 0x2e, 0x64, 0x65, 0x6c, 0x69, 0x76, 0x65, 0x72, 0x79, 0x2e, 0x76, 0x31,
+	0x2e, 0x42, 0x72, 0x61, 0x63, 0x6b, 0x65, 0x74, 0x52, 0x08, 0x62, 0x72, 0x61, 0x63, 0x6b, 0x65,
+	0x74, 0x73, 0x22, 0x6a, 0x0a, 0x1e, 0x4e, 0x6f, 0x74, 0x69, 0x6f, 0x6e, 0x61, 0x6c, 0x42, 0x72,
+	0x61, 0x63, 0x6b, 0x65, 0x74, 0x46, 0x6f, 0x72, 0x50, 0x61, 0x69, 0x72, 0x52, 0x65, 0x73, 0x70,
+	0x6f, 0x6e, 0x73, 0x65, 0x12, 0x48, 0x0a, 0x08, 0x62, 0x72, 0x61, 0x63, 0x6b, 0x65, 0x74, 0x73,
+	0x18, 0x01, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x2c, 0x2e, 0x73, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65,
+	0x73, 0x2e, 0x64, 0x65, 0x6c, 0x69, 0x76, 0x65, 0x72, 0x79, 0x2e, 0x76, 0x31, 0x2e, 0x4e, 0x6f,
+	0x74, 0x69, 0x6f, 0x6e, 0x61, 0x6c, 0x42, 0x72, 0x61, 0x63, 0x6b, 0x65, 0x74, 0x46, 0x6f, 0x72,
+	0x50, 0x61, 0x69, 0x72, 0x52, 0x08, 0x62, 0x72, 0x61, 0x63, 0x6b, 0x65, 0x74, 0x73, 0x42, 0x40,
+	0x5a, 0x3e, 0x67, 0x69, 0x74, 0x68, 0x75, 0x62, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x68, 0x39, 0x38,
+	0x39, 0x36, 0x2f, 0x62, 0x69, 0x6e, 0x67, 0x6f, 0x2d, 0x70, 0x6b, 0x67, 0x2d, 0x70, 0x72, 0x6f,
+	0x74, 0x6f, 0x2f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2f, 0x73, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65,
+	0x73, 0x2f, 0x64, 0x65, 0x6c, 0x69, 0x76, 0x65, 0x72, 0x79, 0x2f, 0x76, 0x31, 0x3b, 0x76, 0x31,
+	0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -1475,57 +2627,87 @@ func file_services_delivery_v1_user_data_msg_proto_rawDescGZIP() []byte {
 	return file_services_delivery_v1_user_data_msg_proto_rawDescData
 }
 
-var file_services_delivery_v1_user_data_msg_proto_msgTypes = make([]protoimpl.MessageInfo, 14)
+var file_services_delivery_v1_user_data_msg_proto_msgTypes = make([]protoimpl.MessageInfo, 29)
 var file_services_delivery_v1_user_data_msg_proto_goTypes = []interface{}{
-	(*GetOrderModifyHistoryRequest)(nil),  // 0: services.delivery.v1.GetOrderModifyHistoryRequest
-	(*GetOrderModifyHistoryResponse)(nil), // 1: services.delivery.v1.GetOrderModifyHistoryResponse
-	(*QueryOrderRequest)(nil),             // 2: services.delivery.v1.QueryOrderRequest
-	(*QueryOrderResponse)(nil),            // 3: services.delivery.v1.QueryOrderResponse
-	(*GetPositionModeResponse)(nil),       // 4: services.delivery.v1.GetPositionModeResponse
-	(*QueryCurrentOpenOrderRequest)(nil),  // 5: services.delivery.v1.QueryCurrentOpenOrderRequest
-	(*QueryCurrentOpenOrderResponse)(nil), // 6: services.delivery.v1.QueryCurrentOpenOrderResponse
-	(*CurrentAllOpenOrdersRequest)(nil),   // 7: services.delivery.v1.CurrentAllOpenOrdersRequest
-	(*CurrentAllOpenOrdersResponse)(nil),  // 8: services.delivery.v1.CurrentAllOpenOrdersResponse
-	(*AllOrdersRequest)(nil),              // 9: services.delivery.v1.AllOrdersRequest
-	(*AllOrdersResponse)(nil),             // 10: services.delivery.v1.AllOrdersResponse
-	(*FuturesAccountBalanceResponse)(nil), // 11: services.delivery.v1.FuturesAccountBalanceResponse
-	(*PositionInformationRequest)(nil),    // 12: services.delivery.v1.PositionInformationRequest
-	(*PositionInformationResponse)(nil),   // 13: services.delivery.v1.PositionInformationResponse
-	(*OrderModifyHistory)(nil),            // 14: services.delivery.v1.OrderModifyHistory
-	(OrderSide)(0),                        // 15: services.delivery.v1.OrderSide
-	(OrderStatus)(0),                      // 16: services.delivery.v1.OrderStatus
-	(TimeInForce)(0),                      // 17: services.delivery.v1.TimeInForce
-	(OrderType)(0),                        // 18: services.delivery.v1.OrderType
-	(WorkingType)(0),                      // 19: services.delivery.v1.WorkingType
-	(PositionSide)(0),                     // 20: services.delivery.v1.PositionSide
-	(*Balance)(nil),                       // 21: services.delivery.v1.Balance
-	(*Position)(nil),                      // 22: services.delivery.v1.Position
+	(*GetOrderModifyHistoryRequest)(nil),           // 0: services.delivery.v1.GetOrderModifyHistoryRequest
+	(*GetOrderModifyHistoryResponse)(nil),          // 1: services.delivery.v1.GetOrderModifyHistoryResponse
+	(*QueryOrderRequest)(nil),                      // 2: services.delivery.v1.QueryOrderRequest
+	(*QueryOrderResponse)(nil),                     // 3: services.delivery.v1.QueryOrderResponse
+	(*GetPositionModeResponse)(nil),                // 4: services.delivery.v1.GetPositionModeResponse
+	(*QueryCurrentOpenOrderRequest)(nil),           // 5: services.delivery.v1.QueryCurrentOpenOrderRequest
+	(*QueryCurrentOpenOrderResponse)(nil),          // 6: services.delivery.v1.QueryCurrentOpenOrderResponse
+	(*CurrentAllOpenOrdersRequest)(nil),            // 7: services.delivery.v1.CurrentAllOpenOrdersRequest
+	(*CurrentAllOpenOrdersResponse)(nil),           // 8: services.delivery.v1.CurrentAllOpenOrdersResponse
+	(*AllOrdersRequest)(nil),                       // 9: services.delivery.v1.AllOrdersRequest
+	(*AllOrdersResponse)(nil),                      // 10: services.delivery.v1.AllOrdersResponse
+	(*FuturesAccountBalanceResponse)(nil),          // 11: services.delivery.v1.FuturesAccountBalanceResponse
+	(*PositionInformationRequest)(nil),             // 12: services.delivery.v1.PositionInformationRequest
+	(*PositionInformationResponse)(nil),            // 13: services.delivery.v1.PositionInformationResponse
+	(*AccountInformationResponse)(nil),             // 14: services.delivery.v1.AccountInformationResponse
+	(*GetPositionMarginChangeHistoryRequest)(nil),  // 15: services.delivery.v1.GetPositionMarginChangeHistoryRequest
+	(*GetPositionMarginChangeHistoryResponse)(nil), // 16: services.delivery.v1.GetPositionMarginChangeHistoryResponse
+	(*AccountTradeListRequest)(nil),                // 17: services.delivery.v1.AccountTradeListRequest
+	(*AccountTradeListResponse)(nil),               // 18: services.delivery.v1.AccountTradeListResponse
+	(*GetIncomeHistoryRequest)(nil),                // 19: services.delivery.v1.GetIncomeHistoryRequest
+	(*IncomeHistory)(nil),                          // 20: services.delivery.v1.IncomeHistory
+	(*GetIncomeHistoryResponse)(nil),               // 21: services.delivery.v1.GetIncomeHistoryResponse
+	(*NotionalBracketForSymbolRequest)(nil),        // 22: services.delivery.v1.NotionalBracketForSymbolRequest
+	(*Bracket)(nil),                                // 23: services.delivery.v1.Bracket
+	(*NotionalBracketForSymbol)(nil),               // 24: services.delivery.v1.NotionalBracketForSymbol
+	(*NotionalBracketForSymbolResponse)(nil),       // 25: services.delivery.v1.NotionalBracketForSymbolResponse
+	(*NotionalBracketForPairRequest)(nil),          // 26: services.delivery.v1.NotionalBracketForPairRequest
+	(*NotionalBracketForPair)(nil),                 // 27: services.delivery.v1.NotionalBracketForPair
+	(*NotionalBracketForPairResponse)(nil),         // 28: services.delivery.v1.NotionalBracketForPairResponse
+	(*OrderModifyHistory)(nil),                     // 29: services.delivery.v1.OrderModifyHistory
+	(OrderSide)(0),                                 // 30: services.delivery.v1.OrderSide
+	(OrderStatus)(0),                               // 31: services.delivery.v1.OrderStatus
+	(TimeInForce)(0),                               // 32: services.delivery.v1.TimeInForce
+	(OrderType)(0),                                 // 33: services.delivery.v1.OrderType
+	(WorkingType)(0),                               // 34: services.delivery.v1.WorkingType
+	(PositionSide)(0),                              // 35: services.delivery.v1.PositionSide
+	(*Balance)(nil),                                // 36: services.delivery.v1.Balance
+	(*Position)(nil),                               // 37: services.delivery.v1.Position
+	(*Asset)(nil),                                  // 38: services.delivery.v1.Asset
+	(*PositionMargin)(nil),                         // 39: services.delivery.v1.PositionMargin
+	(*AccountTrade)(nil),                           // 40: services.delivery.v1.AccountTrade
+	(IncomeType)(0),                                // 41: services.delivery.v1.IncomeType
 }
 var file_services_delivery_v1_user_data_msg_proto_depIdxs = []int32{
-	14, // 0: services.delivery.v1.GetOrderModifyHistoryResponse.orderModifyHistory:type_name -> services.delivery.v1.OrderModifyHistory
-	15, // 1: services.delivery.v1.QueryOrderResponse.side:type_name -> services.delivery.v1.OrderSide
-	16, // 2: services.delivery.v1.QueryOrderResponse.status:type_name -> services.delivery.v1.OrderStatus
-	17, // 3: services.delivery.v1.QueryOrderResponse.timeInForce:type_name -> services.delivery.v1.TimeInForce
-	18, // 4: services.delivery.v1.QueryOrderResponse.type:type_name -> services.delivery.v1.OrderType
-	18, // 5: services.delivery.v1.QueryOrderResponse.origType:type_name -> services.delivery.v1.OrderType
-	19, // 6: services.delivery.v1.QueryOrderResponse.workingType:type_name -> services.delivery.v1.WorkingType
-	20, // 7: services.delivery.v1.QueryOrderResponse.positionSide:type_name -> services.delivery.v1.PositionSide
-	15, // 8: services.delivery.v1.QueryCurrentOpenOrderResponse.side:type_name -> services.delivery.v1.OrderSide
-	16, // 9: services.delivery.v1.QueryCurrentOpenOrderResponse.status:type_name -> services.delivery.v1.OrderStatus
-	17, // 10: services.delivery.v1.QueryCurrentOpenOrderResponse.timeInForce:type_name -> services.delivery.v1.TimeInForce
-	18, // 11: services.delivery.v1.QueryCurrentOpenOrderResponse.type:type_name -> services.delivery.v1.OrderType
-	18, // 12: services.delivery.v1.QueryCurrentOpenOrderResponse.origType:type_name -> services.delivery.v1.OrderType
-	19, // 13: services.delivery.v1.QueryCurrentOpenOrderResponse.workingType:type_name -> services.delivery.v1.WorkingType
-	20, // 14: services.delivery.v1.QueryCurrentOpenOrderResponse.positionSide:type_name -> services.delivery.v1.PositionSide
+	29, // 0: services.delivery.v1.GetOrderModifyHistoryResponse.orderModifyHistory:type_name -> services.delivery.v1.OrderModifyHistory
+	30, // 1: services.delivery.v1.QueryOrderResponse.side:type_name -> services.delivery.v1.OrderSide
+	31, // 2: services.delivery.v1.QueryOrderResponse.status:type_name -> services.delivery.v1.OrderStatus
+	32, // 3: services.delivery.v1.QueryOrderResponse.timeInForce:type_name -> services.delivery.v1.TimeInForce
+	33, // 4: services.delivery.v1.QueryOrderResponse.type:type_name -> services.delivery.v1.OrderType
+	33, // 5: services.delivery.v1.QueryOrderResponse.origType:type_name -> services.delivery.v1.OrderType
+	34, // 6: services.delivery.v1.QueryOrderResponse.workingType:type_name -> services.delivery.v1.WorkingType
+	35, // 7: services.delivery.v1.QueryOrderResponse.positionSide:type_name -> services.delivery.v1.PositionSide
+	30, // 8: services.delivery.v1.QueryCurrentOpenOrderResponse.side:type_name -> services.delivery.v1.OrderSide
+	31, // 9: services.delivery.v1.QueryCurrentOpenOrderResponse.status:type_name -> services.delivery.v1.OrderStatus
+	32, // 10: services.delivery.v1.QueryCurrentOpenOrderResponse.timeInForce:type_name -> services.delivery.v1.TimeInForce
+	33, // 11: services.delivery.v1.QueryCurrentOpenOrderResponse.type:type_name -> services.delivery.v1.OrderType
+	33, // 12: services.delivery.v1.QueryCurrentOpenOrderResponse.origType:type_name -> services.delivery.v1.OrderType
+	34, // 13: services.delivery.v1.QueryCurrentOpenOrderResponse.workingType:type_name -> services.delivery.v1.WorkingType
+	35, // 14: services.delivery.v1.QueryCurrentOpenOrderResponse.positionSide:type_name -> services.delivery.v1.PositionSide
 	6,  // 15: services.delivery.v1.CurrentAllOpenOrdersResponse.currentAllOpenOrders:type_name -> services.delivery.v1.QueryCurrentOpenOrderResponse
 	6,  // 16: services.delivery.v1.AllOrdersResponse.allOrders:type_name -> services.delivery.v1.QueryCurrentOpenOrderResponse
-	21, // 17: services.delivery.v1.FuturesAccountBalanceResponse.futuresAccountBalance:type_name -> services.delivery.v1.Balance
-	22, // 18: services.delivery.v1.PositionInformationResponse.positions:type_name -> services.delivery.v1.Position
-	19, // [19:19] is the sub-list for method output_type
-	19, // [19:19] is the sub-list for method input_type
-	19, // [19:19] is the sub-list for extension type_name
-	19, // [19:19] is the sub-list for extension extendee
-	0,  // [0:19] is the sub-list for field type_name
+	36, // 17: services.delivery.v1.FuturesAccountBalanceResponse.futuresAccountBalance:type_name -> services.delivery.v1.Balance
+	37, // 18: services.delivery.v1.PositionInformationResponse.positions:type_name -> services.delivery.v1.Position
+	38, // 19: services.delivery.v1.AccountInformationResponse.assets:type_name -> services.delivery.v1.Asset
+	37, // 20: services.delivery.v1.AccountInformationResponse.positions:type_name -> services.delivery.v1.Position
+	39, // 21: services.delivery.v1.GetPositionMarginChangeHistoryResponse.positionMargins:type_name -> services.delivery.v1.PositionMargin
+	40, // 22: services.delivery.v1.AccountTradeListResponse.accountTrades:type_name -> services.delivery.v1.AccountTrade
+	41, // 23: services.delivery.v1.GetIncomeHistoryRequest.incomeType:type_name -> services.delivery.v1.IncomeType
+	41, // 24: services.delivery.v1.IncomeHistory.incomeType:type_name -> services.delivery.v1.IncomeType
+	20, // 25: services.delivery.v1.GetIncomeHistoryResponse.incomes:type_name -> services.delivery.v1.IncomeHistory
+	23, // 26: services.delivery.v1.NotionalBracketForSymbol.brackets:type_name -> services.delivery.v1.Bracket
+	24, // 27: services.delivery.v1.NotionalBracketForSymbolResponse.brackets:type_name -> services.delivery.v1.NotionalBracketForSymbol
+	23, // 28: services.delivery.v1.NotionalBracketForPair.brackets:type_name -> services.delivery.v1.Bracket
+	27, // 29: services.delivery.v1.NotionalBracketForPairResponse.brackets:type_name -> services.delivery.v1.NotionalBracketForPair
+	30, // [30:30] is the sub-list for method output_type
+	30, // [30:30] is the sub-list for method input_type
+	30, // [30:30] is the sub-list for extension type_name
+	30, // [30:30] is the sub-list for extension extendee
+	0,  // [0:30] is the sub-list for field type_name
 }
 
 func init() { file_services_delivery_v1_user_data_msg_proto_init() }
@@ -1704,6 +2886,186 @@ func file_services_delivery_v1_user_data_msg_proto_init() {
 				return nil
 			}
 		}
+		file_services_delivery_v1_user_data_msg_proto_msgTypes[14].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*AccountInformationResponse); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_services_delivery_v1_user_data_msg_proto_msgTypes[15].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*GetPositionMarginChangeHistoryRequest); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_services_delivery_v1_user_data_msg_proto_msgTypes[16].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*GetPositionMarginChangeHistoryResponse); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_services_delivery_v1_user_data_msg_proto_msgTypes[17].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*AccountTradeListRequest); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_services_delivery_v1_user_data_msg_proto_msgTypes[18].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*AccountTradeListResponse); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_services_delivery_v1_user_data_msg_proto_msgTypes[19].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*GetIncomeHistoryRequest); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_services_delivery_v1_user_data_msg_proto_msgTypes[20].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*IncomeHistory); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_services_delivery_v1_user_data_msg_proto_msgTypes[21].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*GetIncomeHistoryResponse); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_services_delivery_v1_user_data_msg_proto_msgTypes[22].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*NotionalBracketForSymbolRequest); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_services_delivery_v1_user_data_msg_proto_msgTypes[23].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*Bracket); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_services_delivery_v1_user_data_msg_proto_msgTypes[24].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*NotionalBracketForSymbol); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_services_delivery_v1_user_data_msg_proto_msgTypes[25].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*NotionalBracketForSymbolResponse); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_services_delivery_v1_user_data_msg_proto_msgTypes[26].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*NotionalBracketForPairRequest); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_services_delivery_v1_user_data_msg_proto_msgTypes[27].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*NotionalBracketForPair); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_services_delivery_v1_user_data_msg_proto_msgTypes[28].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*NotionalBracketForPairResponse); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
@@ -1711,7 +3073,7 @@ func file_services_delivery_v1_user_data_msg_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_services_delivery_v1_user_data_msg_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   14,
+			NumMessages:   29,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

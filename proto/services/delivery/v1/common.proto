@@ -67,6 +67,23 @@ enum MarginType {
     CROSSED = 2;
 }
 
+enum IncomeType {
+    INCOME_TYPE_UNSPECIFIED = 0;
+    TRANSFER = 1;
+    WELCOME_BONUS = 2;
+    FUNDING_FEE = 3;
+    REALIZED_PNL = 4;
+    COMMISSION = 5;
+    INSURANCE_CLEAR = 6;
+    DELIVERED_SETTELMENT = 7;
+}
+
+enum AutoCloseType {
+    AUTO_CLOSE_TYPE_UNSPECIFIED = 0;
+    LIQUIDATION = 1;
+    ADL = 2;
+}
+
 message Empty{}
 
 message PositionMargin {
@@ -153,4 +170,38 @@ message ModifyBatchOrders {
     double quantity = 5;
     double price = 6;
     int64 recvWindow = 7;
+}
+
+message Asset {
+    string asset = 1;
+    double walletBalance = 2;
+    double unrealizedProfit = 3;
+    double marginBalance = 4;
+    double maintMargin = 5;
+    double initialMargin = 6;
+    double positionInitialMargin = 7;
+    double openOrderInitialMargin = 8;
+    double maxWithdrawAmount = 9;
+    double crossWalletBalance = 10;
+    double crossUnPnl = 11;
+    double availableBalance = 12;
+}
+
+message AccountTrade {
+    string symbol = 1;
+    int64 id = 2;
+    int64 orderId = 3;
+    string pair = 4;
+    OrderSide side = 5;
+    double price = 6;
+    double qty = 7;
+    double realizedPnl = 8;
+    string marginAsset = 9;
+    double baseQty = 10;
+    double commission = 11;
+    string commissionAsset = 12;
+    int64 time = 13;
+    PositionSide positionSide = 14;
+    bool buyer = 15;
+    bool maker = 16;
 }

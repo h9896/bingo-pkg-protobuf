@@ -50,6 +50,4 @@ service DeliveryTradeService {
     // Modify Isolated Position Margin
     rpc ModifyIsolatedPositionMargin(ModifyIsolatedPositionMarginRequest) returns (ModifyIsolatedPositionMarginResponse) {};
 
-    // Get Position Margin Change History
-    rpc GetPositionMarginChangeHistory(GetPositionMarginChangeHistoryRequest) returns (GetPositionMarginChangeHistoryResponse) {};
 }

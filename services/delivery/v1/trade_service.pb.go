@@ -30,7 +30,7 @@ var file_services_delivery_v1_trade_service_proto_rawDesc = []byte{
 	0x65, 0x72, 0x79, 0x2f, 0x76, 0x31, 0x2f, 0x74, 0x72, 0x61, 0x64, 0x65, 0x5f, 0x6d, 0x73, 0x67,
 	0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x1a, 0x21, 0x73, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x73,
 	0x2f, 0x64, 0x65, 0x6c, 0x69, 0x76, 0x65, 0x72, 0x79, 0x2f, 0x76, 0x31, 0x2f, 0x63, 0x6f, 0x6d,
-	0x6d, 0x6f, 0x6e, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x32, 0xf4, 0x0a, 0x0a, 0x14, 0x44, 0x65,
+	0x6d, 0x6f, 0x6e, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x32, 0xd4, 0x09, 0x0a, 0x14, 0x44, 0x65,
 	0x6c, 0x69, 0x76, 0x65, 0x72, 0x79, 0x54, 0x72, 0x61, 0x64, 0x65, 0x53, 0x65, 0x72, 0x76, 0x69,
 	0x63, 0x65, 0x12, 0x79, 0x0a, 0x12, 0x43, 0x68, 0x61, 0x6e, 0x67, 0x65, 0x50, 0x6f, 0x73, 0x69,
 	0x74, 0x69, 0x6f, 0x6e, 0x4d, 0x6f, 0x64, 0x65, 0x12, 0x2f, 0x2e, 0x73, 0x65, 0x72, 0x76, 0x69,
@@ -108,16 +108,6 @@ var file_services_delivery_v1_trade_service_proto_rawDesc = []byte{
 	0x6c, 0x69, 0x76, 0x65, 0x72, 0x79, 0x2e, 0x76, 0x31, 0x2e, 0x4d, 0x6f, 0x64, 0x69, 0x66, 0x79,
 	0x49, 0x73, 0x6f, 0x6c, 0x61, 0x74, 0x65, 0x64, 0x50, 0x6f, 0x73, 0x69, 0x74, 0x69, 0x6f, 0x6e,
 	0x4d, 0x61, 0x72, 0x67, 0x69, 0x6e, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x00,
-	0x12, 0x9d, 0x01, 0x0a, 0x1e, 0x47, 0x65, 0x74, 0x50, 0x6f, 0x73, 0x69, 0x74, 0x69, 0x6f, 0x6e,
-	0x4d, 0x61, 0x72, 0x67, 0x69, 0x6e, 0x43, 0x68, 0x61, 0x6e, 0x67, 0x65, 0x48, 0x69, 0x73, 0x74,
-	0x6f, 0x72, 0x79, 0x12, 0x3b, 0x2e, 0x73, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x73, 0x2e, 0x64,
-	0x65, 0x6c, 0x69, 0x76, 0x65, 0x72, 0x79, 0x2e, 0x76, 0x31, 0x2e, 0x47, 0x65, 0x74, 0x50, 0x6f,
-	0x73, 0x69, 0x74, 0x69, 0x6f, 0x6e, 0x4d, 0x61, 0x72, 0x67, 0x69, 0x6e, 0x43, 0x68, 0x61, 0x6e,
-	0x67, 0x65, 0x48, 0x69, 0x73, 0x74, 0x6f, 0x72, 0x79, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74,
-	0x1a, 0x3c, 0x2e, 0x73, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x73, 0x2e, 0x64, 0x65, 0x6c, 0x69,
-	0x76, 0x65, 0x72, 0x79, 0x2e, 0x76, 0x31, 0x2e, 0x47, 0x65, 0x74, 0x50, 0x6f, 0x73, 0x69, 0x74,
-	0x69, 0x6f, 0x6e, 0x4d, 0x61, 0x72, 0x67, 0x69, 0x6e, 0x43, 0x68, 0x61, 0x6e, 0x67, 0x65, 0x48,
-	0x69, 0x73, 0x74, 0x6f, 0x72, 0x79, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x00,
 	0x42, 0x40, 0x5a, 0x3e, 0x67, 0x69, 0x74, 0x68, 0x75, 0x62, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x68,
 	0x39, 0x38, 0x39, 0x36, 0x2f, 0x62, 0x69, 0x6e, 0x67, 0x6f, 0x2d, 0x70, 0x6b, 0x67, 0x2d, 0x70,
 	0x72, 0x6f, 0x74, 0x6f, 0x2f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2f, 0x73, 0x65, 0x72, 0x76, 0x69,
@@ -126,28 +116,26 @@ var file_services_delivery_v1_trade_service_proto_rawDesc = []byte{
 }
 
 var file_services_delivery_v1_trade_service_proto_goTypes = []interface{}{
-	(*ChangePositionModeRequest)(nil),              // 0: services.delivery.v1.ChangePositionModeRequest
-	(*NewOrderRequest)(nil),                        // 1: services.delivery.v1.NewOrderRequest
-	(*CancelOrderRequest)(nil),                     // 2: services.delivery.v1.CancelOrderRequest
-	(*ModifyOrderRequest)(nil),                     // 3: services.delivery.v1.ModifyOrderRequest
-	(*PlaceMultipleOrdersRequest)(nil),             // 4: services.delivery.v1.PlaceMultipleOrdersRequest
-	(*CancelAllOpenOrdersRequest)(nil),             // 5: services.delivery.v1.CancelAllOpenOrdersRequest
-	(*AutoCancelAllOpenOrdersRequest)(nil),         // 6: services.delivery.v1.AutoCancelAllOpenOrdersRequest
-	(*ChangeInitialLeverageRequest)(nil),           // 7: services.delivery.v1.ChangeInitialLeverageRequest
-	(*ChangeMarginTypeRequest)(nil),                // 8: services.delivery.v1.ChangeMarginTypeRequest
-	(*ModifyIsolatedPositionMarginRequest)(nil),    // 9: services.delivery.v1.ModifyIsolatedPositionMarginRequest
-	(*GetPositionMarginChangeHistoryRequest)(nil),  // 10: services.delivery.v1.GetPositionMarginChangeHistoryRequest
-	(*ChangePositionModeResponse)(nil),             // 11: services.delivery.v1.ChangePositionModeResponse
-	(*NewOrderResponse)(nil),                       // 12: services.delivery.v1.NewOrderResponse
-	(*CancelOrderResponse)(nil),                    // 13: services.delivery.v1.CancelOrderResponse
-	(*ModifyOrderResponse)(nil),                    // 14: services.delivery.v1.ModifyOrderResponse
-	(*PlaceMultipleOrdersResponse)(nil),            // 15: services.delivery.v1.PlaceMultipleOrdersResponse
-	(*CancelAllOpenOrdersResponse)(nil),            // 16: services.delivery.v1.CancelAllOpenOrdersResponse
-	(*AutoCancelAllOpenOrdersResponse)(nil),        // 17: services.delivery.v1.AutoCancelAllOpenOrdersResponse
-	(*ChangeInitialLeverageResponse)(nil),          // 18: services.delivery.v1.ChangeInitialLeverageResponse
-	(*ChangeMarginTypeResponse)(nil),               // 19: services.delivery.v1.ChangeMarginTypeResponse
-	(*ModifyIsolatedPositionMarginResponse)(nil),   // 20: services.delivery.v1.ModifyIsolatedPositionMarginResponse
-	(*GetPositionMarginChangeHistoryResponse)(nil), // 21: services.delivery.v1.GetPositionMarginChangeHistoryResponse
+	(*ChangePositionModeRequest)(nil),            // 0: services.delivery.v1.ChangePositionModeRequest
+	(*NewOrderRequest)(nil),                      // 1: services.delivery.v1.NewOrderRequest
+	(*CancelOrderRequest)(nil),                   // 2: services.delivery.v1.CancelOrderRequest
+	(*ModifyOrderRequest)(nil),                   // 3: services.delivery.v1.ModifyOrderRequest
+	(*PlaceMultipleOrdersRequest)(nil),           // 4: services.delivery.v1.PlaceMultipleOrdersRequest
+	(*CancelAllOpenOrdersRequest)(nil),           // 5: services.delivery.v1.CancelAllOpenOrdersRequest
+	(*AutoCancelAllOpenOrdersRequest)(nil),       // 6: services.delivery.v1.AutoCancelAllOpenOrdersRequest
+	(*ChangeInitialLeverageRequest)(nil),         // 7: services.delivery.v1.ChangeInitialLeverageRequest
+	(*ChangeMarginTypeRequest)(nil),              // 8: services.delivery.v1.ChangeMarginTypeRequest
+	(*ModifyIsolatedPositionMarginRequest)(nil),  // 9: services.delivery.v1.ModifyIsolatedPositionMarginRequest
+	(*ChangePositionModeResponse)(nil),           // 10: services.delivery.v1.ChangePositionModeResponse
+	(*NewOrderResponse)(nil),                     // 11: services.delivery.v1.NewOrderResponse
+	(*CancelOrderResponse)(nil),                  // 12: services.delivery.v1.CancelOrderResponse
+	(*ModifyOrderResponse)(nil),                  // 13: services.delivery.v1.ModifyOrderResponse
+	(*PlaceMultipleOrdersResponse)(nil),          // 14: services.delivery.v1.PlaceMultipleOrdersResponse
+	(*CancelAllOpenOrdersResponse)(nil),          // 15: services.delivery.v1.CancelAllOpenOrdersResponse
+	(*AutoCancelAllOpenOrdersResponse)(nil),      // 16: services.delivery.v1.AutoCancelAllOpenOrdersResponse
+	(*ChangeInitialLeverageResponse)(nil),        // 17: services.delivery.v1.ChangeInitialLeverageResponse
+	(*ChangeMarginTypeResponse)(nil),             // 18: services.delivery.v1.ChangeMarginTypeResponse
+	(*ModifyIsolatedPositionMarginResponse)(nil), // 19: services.delivery.v1.ModifyIsolatedPositionMarginResponse
 }
 var file_services_delivery_v1_trade_service_proto_depIdxs = []int32{
 	0,  // 0: services.delivery.v1.DeliveryTradeService.ChangePositionMode:input_type -> services.delivery.v1.ChangePositionModeRequest
@@ -160,20 +148,18 @@ var file_services_delivery_v1_trade_service_proto_depIdxs = []int32{
 	7,  // 7: services.delivery.v1.DeliveryTradeService.ChangeInitialLeverage:input_type -> services.delivery.v1.ChangeInitialLeverageRequest
 	8,  // 8: services.delivery.v1.DeliveryTradeService.ChangeMarginType:input_type -> services.delivery.v1.ChangeMarginTypeRequest
 	9,  // 9: services.delivery.v1.DeliveryTradeService.ModifyIsolatedPositionMargin:input_type -> services.delivery.v1.ModifyIsolatedPositionMarginRequest
-	10, // 10: services.delivery.v1.DeliveryTradeService.GetPositionMarginChangeHistory:input_type -> services.delivery.v1.GetPositionMarginChangeHistoryRequest
-	11, // 11: services.delivery.v1.DeliveryTradeService.ChangePositionMode:output_type -> services.delivery.v1.ChangePositionModeResponse
-	12, // 12: services.delivery.v1.DeliveryTradeService.NewOrder:output_type -> services.delivery.v1.NewOrderResponse
-	13, // 13: services.delivery.v1.DeliveryTradeService.CancelOrder:output_type -> services.delivery.v1.CancelOrderResponse
-	14, // 14: services.delivery.v1.DeliveryTradeService.ModifyOrder:output_type -> services.delivery.v1.ModifyOrderResponse
-	15, // 15: services.delivery.v1.DeliveryTradeService.PlaceMultipleOrders:output_type -> services.delivery.v1.PlaceMultipleOrdersResponse
-	16, // 16: services.delivery.v1.DeliveryTradeService.CancelAllOpenOrders:output_type -> services.delivery.v1.CancelAllOpenOrdersResponse
-	17, // 17: services.delivery.v1.DeliveryTradeService.AutoCancelAllOpenOrder:output_type -> services.delivery.v1.AutoCancelAllOpenOrdersResponse
-	18, // 18: services.delivery.v1.DeliveryTradeService.ChangeInitialLeverage:output_type -> services.delivery.v1.ChangeInitialLeverageResponse
-	19, // 19: services.delivery.v1.DeliveryTradeService.ChangeMarginType:output_type -> services.delivery.v1.ChangeMarginTypeResponse
-	20, // 20: services.delivery.v1.DeliveryTradeService.ModifyIsolatedPositionMargin:output_type -> services.delivery.v1.ModifyIsolatedPositionMarginResponse
-	21, // 21: services.delivery.v1.DeliveryTradeService.GetPositionMarginChangeHistory:output_type -> services.delivery.v1.GetPositionMarginChangeHistoryResponse
-	11, // [11:22] is the sub-list for method output_type
-	0,  // [0:11] is the sub-list for method input_type
+	10, // 10: services.delivery.v1.DeliveryTradeService.ChangePositionMode:output_type -> services.delivery.v1.ChangePositionModeResponse
+	11, // 11: services.delivery.v1.DeliveryTradeService.NewOrder:output_type -> services.delivery.v1.NewOrderResponse
+	12, // 12: services.delivery.v1.DeliveryTradeService.CancelOrder:output_type -> services.delivery.v1.CancelOrderResponse
+	13, // 13: services.delivery.v1.DeliveryTradeService.ModifyOrder:output_type -> services.delivery.v1.ModifyOrderResponse
+	14, // 14: services.delivery.v1.DeliveryTradeService.PlaceMultipleOrders:output_type -> services.delivery.v1.PlaceMultipleOrdersResponse
+	15, // 15: services.delivery.v1.DeliveryTradeService.CancelAllOpenOrders:output_type -> services.delivery.v1.CancelAllOpenOrdersResponse
+	16, // 16: services.delivery.v1.DeliveryTradeService.AutoCancelAllOpenOrder:output_type -> services.delivery.v1.AutoCancelAllOpenOrdersResponse
+	17, // 17: services.delivery.v1.DeliveryTradeService.ChangeInitialLeverage:output_type -> services.delivery.v1.ChangeInitialLeverageResponse
+	18, // 18: services.delivery.v1.DeliveryTradeService.ChangeMarginType:output_type -> services.delivery.v1.ChangeMarginTypeResponse
+	19, // 19: services.delivery.v1.DeliveryTradeService.ModifyIsolatedPositionMargin:output_type -> services.delivery.v1.ModifyIsolatedPositionMarginResponse
+	10, // [10:20] is the sub-list for method output_type
+	0,  // [0:10] is the sub-list for method input_type
 	0,  // [0:0] is the sub-list for extension type_name
 	0,  // [0:0] is the sub-list for extension extendee
 	0,  // [0:0] is the sub-list for field type_name

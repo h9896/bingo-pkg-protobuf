@@ -49,8 +49,6 @@ type DeliveryTradeServiceClient interface {
 	ChangeMarginType(ctx context.Context, in *ChangeMarginTypeRequest, opts ...grpc.CallOption) (*ChangeMarginTypeResponse, error)
 	// Modify Isolated Position Margin
 	ModifyIsolatedPositionMargin(ctx context.Context, in *ModifyIsolatedPositionMarginRequest, opts ...grpc.CallOption) (*ModifyIsolatedPositionMarginResponse, error)
-	// Get Position Margin Change History
-	GetPositionMarginChangeHistory(ctx context.Context, in *GetPositionMarginChangeHistoryRequest, opts ...grpc.CallOption) (*GetPositionMarginChangeHistoryResponse, error)
 }
 
 type deliveryTradeServiceClient struct {
@@ -151,15 +149,6 @@ func (c *deliveryTradeServiceClient) ModifyIsolatedPositionMargin(ctx context.Co
 	return out, nil
 }
 
-func (c *deliveryTradeServiceClient) GetPositionMarginChangeHistory(ctx context.Context, in *GetPositionMarginChangeHistoryRequest, opts ...grpc.CallOption) (*GetPositionMarginChangeHistoryResponse, error) {
-	out := new(GetPositionMarginChangeHistoryResponse)
-	err := c.cc.Invoke(ctx, "/services.delivery.v1.DeliveryTradeService/GetPositionMarginChangeHistory", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
 // DeliveryTradeServiceServer is the server API for DeliveryTradeService service.
 // All implementations should embed UnimplementedDeliveryTradeServiceServer
 // for forward compatibility
@@ -191,8 +180,6 @@ type DeliveryTradeServiceServer interface {
 	ChangeMarginType(context.Context, *ChangeMarginTypeRequest) (*ChangeMarginTypeResponse, error)
 	// Modify Isolated Position Margin
 	ModifyIsolatedPositionMargin(context.Context, *ModifyIsolatedPositionMarginRequest) (*ModifyIsolatedPositionMarginResponse, error)
-	// Get Position Margin Change History
-	GetPositionMarginChangeHistory(context.Context, *GetPositionMarginChangeHistoryRequest) (*GetPositionMarginChangeHistoryResponse, error)
 }
 
 // UnimplementedDeliveryTradeServiceServer should be embedded to have forward compatible implementations.
@@ -228,9 +215,6 @@ func (UnimplementedDeliveryTradeServiceServer) ChangeMarginType(context.Context,
 }
 func (UnimplementedDeliveryTradeServiceServer) ModifyIsolatedPositionMargin(context.Context, *ModifyIsolatedPositionMarginRequest) (*ModifyIsolatedPositionMarginResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ModifyIsolatedPositionMargin not implemented")
-}
-func (UnimplementedDeliveryTradeServiceServer) GetPositionMarginChangeHistory(context.Context, *GetPositionMarginChangeHistoryRequest) (*GetPositionMarginChangeHistoryResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetPositionMarginChangeHistory not implemented")
 }
 
 // UnsafeDeliveryTradeServiceServer may be embedded to opt out of forward compatibility for this service.
@@ -424,24 +408,6 @@ func _DeliveryTradeService_ModifyIsolatedPositionMargin_Handler(srv interface{},
 	return interceptor(ctx, in, info, handler)
 }
 
-func _DeliveryTradeService_GetPositionMarginChangeHistory_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetPositionMarginChangeHistoryRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(DeliveryTradeServiceServer).GetPositionMarginChangeHistory(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/services.delivery.v1.DeliveryTradeService/GetPositionMarginChangeHistory",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(DeliveryTradeServiceServer).GetPositionMarginChangeHistory(ctx, req.(*GetPositionMarginChangeHistoryRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 // DeliveryTradeService_ServiceDesc is the grpc.ServiceDesc for DeliveryTradeService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -488,10 +454,6 @@ var DeliveryTradeService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "ModifyIsolatedPositionMargin",
 			Handler:    _DeliveryTradeService_ModifyIsolatedPositionMargin_Handler,
-		},
-		{
-			MethodName: "GetPositionMarginChangeHistory",
-			Handler:    _DeliveryTradeService_GetPositionMarginChangeHistory_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

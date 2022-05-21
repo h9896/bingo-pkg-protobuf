@@ -31,9 +31,28 @@ service DeliveryUserDataService {
     // Futures Account Balance
     rpc FuturesAccountBalance(Empty) returns (FuturesAccountBalanceResponse){};
 
-    // Get current account information.
-    // rpc AccountInformation(Empty) returns (){};
-
     // Position Information
     rpc PositionInformation(PositionInformationRequest) returns (PositionInformationResponse){};
+
+    // Get current account information.
+    rpc AccountInformation(Empty) returns (AccountInformationResponse){};
+
+    
+    // Get Position Margin Change History
+    rpc GetPositionMarginChangeHistory(GetPositionMarginChangeHistoryRequest) returns (GetPositionMarginChangeHistoryResponse){};
+
+    // Get trades for a specific account and symbol.
+    rpc AccountTradeList(AccountTradeListRequest) returns (AccountTradeListResponse){};
+
+    // Get Income History
+    rpc GetIncomeHistory(GetIncomeHistoryRequest) returns (GetIncomeHistoryResponse){};
+
+    // Get the pair's default notional bracket list.
+    rpc NotionalBracketForSymbol(NotionalBracketForSymbolRequest) returns (NotionalBracketForSymbolResponse){};
+
+    // Get the symbol's notional bracket list.
+    rpc NotionalBracketForPair(NotionalBracketForPairRequest) returns (NotionalBracketForPairResponse){};
+
+    // // User's Force Orders
+    // rpc UsersForceOrders() returns (){};
 }
