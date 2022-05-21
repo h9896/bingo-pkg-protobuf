@@ -24,7 +24,7 @@ service DeliveryTradeService {
     rpc ModifyOrder(ModifyOrderRequest) returns (ModifyOrderResponse){};
 
     // Place Multiple Orders 
-    rpc PlaceMultipleOrders(PlaceMultipleOrdersRequest) returns (PlaceMultipleOrdersResponse){};
+    // rpc PlaceMultipleOrders(PlaceMultipleOrdersRequest) returns (PlaceMultipleOrdersResponse){};
 
     // // Modify Multiple Orders
     // rpc ModifyMultipleOrders(ModifyMultipleOrdersRequest) returns (ModifyMultipleOrdersResponse){};

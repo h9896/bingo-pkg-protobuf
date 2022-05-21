@@ -31,8 +31,6 @@ type DeliveryTradeServiceClient interface {
 	// Order modify function, currently only LIMIT order modification is supported,
 	// modified orders will be reordered in the match queue
 	ModifyOrder(ctx context.Context, in *ModifyOrderRequest, opts ...grpc.CallOption) (*ModifyOrderResponse, error)
-	// Place Multiple Orders
-	PlaceMultipleOrders(ctx context.Context, in *PlaceMultipleOrdersRequest, opts ...grpc.CallOption) (*PlaceMultipleOrdersResponse, error)
 	// Cancel All Open Orders
 	CancelAllOpenOrders(ctx context.Context, in *CancelAllOpenOrdersRequest, opts ...grpc.CallOption) (*CancelAllOpenOrdersResponse, error)
 	// Cancel all open orders of the specified symbol at the end of the specified countdown
@@ -89,15 +87,6 @@ func (c *deliveryTradeServiceClient) CancelOrder(ctx context.Context, in *Cancel
 func (c *deliveryTradeServiceClient) ModifyOrder(ctx context.Context, in *ModifyOrderRequest, opts ...grpc.CallOption) (*ModifyOrderResponse, error) {
 	out := new(ModifyOrderResponse)
 	err := c.cc.Invoke(ctx, "/services.delivery.v1.DeliveryTradeService/ModifyOrder", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *deliveryTradeServiceClient) PlaceMultipleOrders(ctx context.Context, in *PlaceMultipleOrdersRequest, opts ...grpc.CallOption) (*PlaceMultipleOrdersResponse, error) {
-	out := new(PlaceMultipleOrdersResponse)
-	err := c.cc.Invoke(ctx, "/services.delivery.v1.DeliveryTradeService/PlaceMultipleOrders", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -162,8 +151,6 @@ type DeliveryTradeServiceServer interface {
 	// Order modify function, currently only LIMIT order modification is supported,
 	// modified orders will be reordered in the match queue
 	ModifyOrder(context.Context, *ModifyOrderRequest) (*ModifyOrderResponse, error)
-	// Place Multiple Orders
-	PlaceMultipleOrders(context.Context, *PlaceMultipleOrdersRequest) (*PlaceMultipleOrdersResponse, error)
 	// Cancel All Open Orders
 	CancelAllOpenOrders(context.Context, *CancelAllOpenOrdersRequest) (*CancelAllOpenOrdersResponse, error)
 	// Cancel all open orders of the specified symbol at the end of the specified countdown
@@ -197,9 +184,6 @@ func (UnimplementedDeliveryTradeServiceServer) CancelOrder(context.Context, *Can
 }
 func (UnimplementedDeliveryTradeServiceServer) ModifyOrder(context.Context, *ModifyOrderRequest) (*ModifyOrderResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ModifyOrder not implemented")
-}
-func (UnimplementedDeliveryTradeServiceServer) PlaceMultipleOrders(context.Context, *PlaceMultipleOrdersRequest) (*PlaceMultipleOrdersResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method PlaceMultipleOrders not implemented")
 }
 func (UnimplementedDeliveryTradeServiceServer) CancelAllOpenOrders(context.Context, *CancelAllOpenOrdersRequest) (*CancelAllOpenOrdersResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CancelAllOpenOrders not implemented")
@@ -296,24 +280,6 @@ func _DeliveryTradeService_ModifyOrder_Handler(srv interface{}, ctx context.Cont
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(DeliveryTradeServiceServer).ModifyOrder(ctx, req.(*ModifyOrderRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _DeliveryTradeService_PlaceMultipleOrders_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(PlaceMultipleOrdersRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(DeliveryTradeServiceServer).PlaceMultipleOrders(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/services.delivery.v1.DeliveryTradeService/PlaceMultipleOrders",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(DeliveryTradeServiceServer).PlaceMultipleOrders(ctx, req.(*PlaceMultipleOrdersRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -430,10 +396,6 @@ var DeliveryTradeService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "ModifyOrder",
 			Handler:    _DeliveryTradeService_ModifyOrder_Handler,
-		},
-		{
-			MethodName: "PlaceMultipleOrders",
-			Handler:    _DeliveryTradeService_PlaceMultipleOrders_Handler,
 		},
 		{
 			MethodName: "CancelAllOpenOrders",
