@@ -127,18 +127,34 @@ message Balance {
     int64 updateTime = 8;
 }
 
-message Position {
+message PositionAsset {
+    string symbol = 1;
+    int64 positionAmt = 2;
+    double initialMargin = 3;
+    double maintMargin = 4;
+    double unrealizedProfit = 5;
+    double positionInitialMargin = 6;
+    int32 leverage = 7;
+    double openOrderInitialMargin = 8;
+    double maxQty = 9;
+    double entryPrice = 10;
+    bool isolated = 11;
+    PositionSide positionSide = 12;
+    int64 updateTime = 13;
+}
+
+message PositionString {
     string symbol = 1;
     int64 positionAmt = 2;
     double entryPrice = 3;
     double markPrice = 4;
     double unRealizedProfit = 5;
-    int64 liquidationPrice = 6;
+    double liquidationPrice = 6;
     int32 leverage = 7;
-    int64 maxQty = 8;
-    MarginType marginType = 9;
+    double maxQty = 8;
+    string marginType = 9;
     double isolatedMargin = 10;
-    bool isAutoAddMargin = 11;
+    string isAutoAddMargin = 11;
     PositionSide positionSide = 12;
     int64 updateTime = 13;
 }

@@ -128,12 +128,12 @@ message PositionInformationRequest {
 }
 
 message PositionInformationResponse {
-    repeated Position positions = 1;
+    repeated PositionString positions = 1;
 }
 
 message AccountInformationResponse{
     repeated Asset assets = 1;
-    repeated Position positions = 2;
+    repeated PositionAsset positions = 2;
     bool canDeposit = 3;
     bool canTrade = 4;
     bool canWithdraw = 5;
